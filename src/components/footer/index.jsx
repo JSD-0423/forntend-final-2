@@ -17,7 +17,7 @@ const Footer = () => {
       <Stack
         direction={{ xs: "column", sm: "row" }}
         justifyContent="space-between"
-        sx={{ padding: {xs:"25px 5px",sm:"30px"}, paddingBottom:"70px" }}
+        sx={{ padding: {xs:"25px 5px",sm:"30px 30px 70px"}}}
         spacing={3}
       >
         <Stack
@@ -60,7 +60,7 @@ const Footer = () => {
             <TwitterIcon sx={{ color: "primary.tint" }} fontSize="large" />
             <YouTubeIcon sx={{ color: "primary.tint" }} fontSize="large" />
           </Stack>
-          <Stack spacing={0.5}>
+          <Stack spacing={1}>
             <Stack
               direction="row"
               alignItems="center"
