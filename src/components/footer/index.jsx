@@ -17,7 +17,7 @@ const Footer = () => {
       <Stack
         direction={{ xs: "column", sm: "row" }}
         justifyContent="space-between"
-        sx={{ padding: "30px", paddingBottom:"70px" }}
+        sx={{ padding: {xs:"25px 5px",sm:"30px"}, paddingBottom:"70px" }}
         spacing={3}
       >
         <Stack
