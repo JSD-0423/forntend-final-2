@@ -69,4 +69,16 @@ theme.typography.h2 = {
   fontSize: "1rem",
 };
 
+theme.typography.body1 = {
+  fontFamily: [
+    "Nunito Sans",
+    "Roboto",
+    "'Helvetica Neue'",
+    "Arial",
+    "sans-serif",
+  ].join(","),
+  color: theme.palette.highEmphasis,
+  fontSize: "1rem",
+};
+
 export default theme;
