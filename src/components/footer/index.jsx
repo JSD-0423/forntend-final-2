@@ -83,57 +83,6 @@ const Footer = () => {
           
         </Stack>
       </Stack>
-      {/* <Grid
-        container
-        spacing={2}
-        justifyContent="space-between"
-        sx={{ padding: "30px" }}
-      >
-        <Stack container item maxWidth="sm" direction="row" gap={4}>
-          <Stack item xs={12} >
-            <Typography sx={{ color: "bright.main" }}>
-              Shop by Category
-            </Typography>
-            <Typography sx={{ color: "lightText.main" }}>Skincare</Typography>
-            <Typography sx={{ color: "lightText.main" }}>
-              Personal Care
-            </Typography>
-            <Typography sx={{ color: "lightText.main" }}>Handbags</Typography>
-            <Typography sx={{ color: "lightText.main" }}>Apparels</Typography>
-            <Typography sx={{ color: "lightText.main" }}>Watches</Typography>
-            <Typography sx={{ color: "lightText.main" }}>Eye Wear</Typography>
-            <Typography sx={{ color: "lightText.main" }}>Jewellers</Typography>
-          </Stack>
-          <Grid item xs={12} sm={3}>
-            <Typography sx={{ color: "bright.main" }}>
-              Shop by products
-            </Typography>
-            <Typography sx={{ color: "lightText.main" }}>featured </Typography>
-            <Typography sx={{ color: "lightText.main" }}>trendy </Typography>
-            <Typography sx={{ color: "lightText.main" }}>brands </Typography>
-          </Grid>
-        </Stack>
-        <Stack container item xs={12} sm={2} >
-          <Stack direction="row" gap={2} paddingTop="20px" justifyContent="flex-end">
-            {" "}
-            <FacebookOutlinedIcon
-              sx={{ color: "primary.tint" }}
-              fontSize="large"
-            />
-            <InstagramIcon sx={{ color: "primary.tint" }} fontSize="large" />
-            <TwitterIcon sx={{ color: "primary.tint" }} fontSize="large" />
-            <YouTubeIcon sx={{ color: "primary.tint" }} fontSize="large" />
-          </Stack>
-          <Stack direction="row" justifyContent="flex-end" alignItems="center" gap={1} >
-            <LocationOnOutlinedIcon sx={{ color: "bright.main" }} fontSize="small" />
-            <Typography sx={{ color: "bright.main" }}>United States</Typography>
-          </Stack>
-          <Typography sx={{ color: "lightText.main" }}>© 2021 | Cora Leviene All Rights Reserved</Typography>
-
-        </Stack>
-      </Grid>
-      
-      <Divider sx={{ width: "100%", height: 1, bgcolor: "primary.tint" }} /> */}
     </Container>
   );
 };
