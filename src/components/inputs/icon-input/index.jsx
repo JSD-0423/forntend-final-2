@@ -1,10 +1,12 @@
 import { TextField, InputAdornment } from "@mui/material";
 
-const FilledIconInput = ({
+const IconInput = ({
   icon = null,
   placeHolder = "place holder",
   isIconStart = true,
-  text = null,
+  text = "",
+  type,
+  isStart,
   handler,
 }) => {
   // {type} prop can be: "filled", "outlined", or "standard"

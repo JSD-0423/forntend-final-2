@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
-import FilledIconInput from "../inputs/filled-icon-input";
+import IconInput from "../inputs/icon-input";
 import Logo from "../../assets/icons/logo.svg";
 import heartIcon from "../../assets/icons/heart.svg";
 import userIcon from "../../assets/icons/user.svg";
@@ -49,7 +49,7 @@ const Header = () => {
       </Stack>
       <Stack direction={"row"} justifyContent={"space-between"}>
         <Box sx={{ width: "400px" }}>
-          <FilledIconInput
+          <IconInput
             placeHolder="Search for products or brands..."
             icon={<FiSearch size={25} />}
           />
