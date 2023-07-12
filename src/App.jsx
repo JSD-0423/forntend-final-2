@@ -1,17 +1,22 @@
 import Header from "./components/header";
-import { Stack, ThemeProvider } from "@mui/material";
+import { Stack, ThemeProvider, Typography } from "@mui/material";
 import theme from "./themes/theme";
 import { BrowserRouter } from "react-router-dom";
-import ButtonWithIcon from "./components/buttons/button-with-Icon";
+import NavLink from "./components/links/nav-link";
+
 import { AiOutlineShoppingCart } from "react-icons/ai";
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <ButtonWithIcon
-          type={"contained"}
-          icon={<AiOutlineShoppingCart />}
-          isIconStart={false}
+        <NavLink
+          path={"www.facebook.com"}
+          isUnderLined={true}
+          component={
+            <Typography color="error" variant="h2">
+              Brands
+            </Typography>
+          }
         />
       </ThemeProvider>
     </BrowserRouter>
