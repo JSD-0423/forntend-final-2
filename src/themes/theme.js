@@ -38,4 +38,10 @@ const theme = createTheme({
   },
 });
 
+theme.typography.h3 = {
+  fontSize: "2rem",
+  fontWeight: "600",
+  fontFamily: ["Inter", "sans-serif"].join(","),
+};
+
 export default theme;

@@ -1,5 +1,5 @@
 import { Box, IconButton, Typography, Stack } from "@mui/material";
-import heartIcon from "../../assets/icons/heart.svg";
+import heartIcon from "../../assets/icons/heart-secondary.svg";
 
 const ProductCard = ({
   name,
@@ -12,17 +12,18 @@ const ProductCard = ({
 }) => {
   // The price could be on sale or not, also a rating can be added to the card
   return (
-    <Stack direction={"column"} sx={{ width: "100%", gap: "9px" }}>
-      <Box sx={{ height: "286px", backgroundImage: `url('${image}')` }} />
-      <Stack
-        direction={"column"}
-        sx={{ width: "100%" }}
-        justifyContent={"space-between"}
-        gap={1}
-      >
+    <Stack direction={"column"} sx={{ gap: "9px" }}>
+      <Box
+        sx={{
+          minWidth: "286px",
+          height: "286px",
+          backgroundImage: `url('${image}')`,
+        }}
+      />
+      <Stack direction={"column"} justifyContent={"space-between"} gap={1}>
         <Stack direction={"row"} justifyContent={"space-between"}>
           <Typography>{name}</Typography>
-          <img src={heartIcon} alt="heart icon" />
+          <img src={heartIcon} alt="heart icon" style={{ color: "black" }} />
         </Stack>
         <Typography color={"grey"}>{category}</Typography>
         <Box>{price}</Box>
