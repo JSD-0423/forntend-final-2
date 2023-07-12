@@ -12,7 +12,7 @@ const DefaultInput = ({
   handler,
 }) => {
   // {type} prop can be: "filled", "outlined", or "standard"
-  // {isStart} prop is a boolen that shows if the adorment displays at start or end of input
+  // {isAdormentStart} prop is a boolen that shows if the adorment displays at start or end of input
   // provide size with "rem" unit
   // provide adorment size seperatly on it
 
