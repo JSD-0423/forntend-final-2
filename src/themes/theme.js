@@ -34,13 +34,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: [
-      "Nunito Sans",
-      "Roboto",
-      "'Helvetica Neue'",
-      "Arial",
-      "sans-serif",
-    ].join(","),
+    fontFamily: ["Inter", "sans-serif"].join(","),
   },
 });
 
@@ -48,23 +42,11 @@ theme.typography.h1 = {
   fontSize: "2rem",
   color: "#17494D",
   fontWeight: 700,
-  fontFamily: [
-    "Nunito Sans",
-    "Roboto",
-    "'Helvetica Neue'",
-    "Arial",
-    "sans-serif",
-  ].join(","),
+  fontFamily: ["Inter", "sans-serif"].join(","),
 };
 
 theme.typography.h2 = {
-  fontFamily: [
-    "Nunito Sans",
-    "Roboto",
-    "'Helvetica Neue'",
-    "Arial",
-    "sans-serif",
-  ].join(","),
+  fontFamily: ["Inter", "sans-serif"].join(","),
   color: theme.palette.highEmphasis,
   fontSize: "1rem",
 };

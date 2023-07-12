@@ -1,23 +1,28 @@
 import { InputAdornment } from "@mui/material";
-import StyledTextField from "./styles";
+import StyledTextField from "../styles";
+import { TextField } from "@mui/material";
 
-const InputWithAdornment = ({
+const DefaultInput = ({
   adorment = null,
   placeholder = "place holder",
   isAdormentStart = true,
   text = "",
   type,
+  size,
   handler,
 }) => {
   // {type} prop can be: "filled", "outlined", or "standard"
   // {isStart} prop is a boolen that shows if the adorment displays at start or end of input
+  // provide size with "rem" unit
+  // provide adorment size seperatly on it
 
   return (
     <StyledTextField
-      // fullWidth
+      fullWidth
       variant={type}
       value={text}
       placeholder={placeholder}
+      size={size}
       // onChange={(e) => {
       //   handler(e);
       // }}
@@ -31,9 +36,8 @@ const InputWithAdornment = ({
             <InputAdornment position={"start"}>{adorment}</InputAdornment>
           ) : null,
       }}
-      size="small"
     />
   );
 };
 
-export default InputWithAdornment;
+export default DefaultInput;
