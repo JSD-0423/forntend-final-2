@@ -14,7 +14,7 @@ const PlainSlide = ({children,image}) => {
   return (
     <Box position="relative"  >
     <StyledImage
-      src={`${image}`} 
+      src={image}
       alt="Product"
     ></StyledImage>
     {children} 
