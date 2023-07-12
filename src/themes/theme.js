@@ -38,17 +38,4 @@ const theme = createTheme({
   },
 });
 
-theme.typography.h1 = {
-  fontSize: "2rem",
-  color: "#17494D",
-  fontWeight: 700,
-  fontFamily: ["Inter", "sans-serif"].join(","),
-};
-
-theme.typography.h2 = {
-  fontFamily: ["Inter", "sans-serif"].join(","),
-  color: theme.palette.highEmphasis,
-  fontSize: "1rem",
-};
-
 export default theme;
