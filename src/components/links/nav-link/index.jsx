@@ -1,12 +1,8 @@
-import { Link } from "react-router-dom";
-import StyledLink from "./styles";
+import StyledLink from "../styles";
 
-const NavLink = ({ path = "/", component, isUnderLined = false }) => {
+const NavLink = ({ path = "/", component, isUnderlined = false }) => {
   return (
-    <StyledLink
-      to={path}
-      style={{ textDecoration: isUnderLined ? "underline" : "none" }}
-    >
+    <StyledLink to={path} isUnderlined={isUnderlined}>
       {component}
     </StyledLink>
   );

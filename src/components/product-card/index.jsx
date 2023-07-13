@@ -1,5 +1,6 @@
 import { Box, IconButton, Typography, Stack } from "@mui/material";
 import heartIcon from "../../assets/icons/heart-secondary.svg";
+import NavLink from "../links/nav-link";
 
 const ProductCard = ({
   name,
@@ -13,13 +14,21 @@ const ProductCard = ({
   // The price could be on sale or not, also a rating can be added to the card
   return (
     <Stack direction={"column"} sx={{ gap: "9px" }}>
-      <Box
-        sx={{
-          minWidth: "286px",
-          height: "286px",
-          backgroundImage: `url('${image}')`,
-        }}
+      <NavLink
+        component={
+          <Box
+            sx={{
+              height: "286px",
+              width: "286px",
+              backgroundImage: `url('${image}')`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          />
+        }
       />
+
       <Stack direction={"column"} justifyContent={"space-between"} gap={1}>
         <Stack direction={"row"} justifyContent={"space-between"}>
           <Typography>{name}</Typography>

@@ -3,6 +3,7 @@ import ProductCard from "../../../components/product-card";
 import purse from "../../../assets/images/purse.png";
 import { Box, Container, Typography, Stack } from "@mui/material";
 import NavLink from "../../../components/links/nav-link";
+import Carousel from "react-material-ui-carousel";
 
 const NewArrivalsSection = () => {
   return (
@@ -18,7 +19,27 @@ const NewArrivalsSection = () => {
       <Box>
         <Typography variant="h3">New Arrivals</Typography>
       </Box>
-      <Stack gap={5} direction="row" justifyContent="space-between">
+      <Stack
+        gap={5}
+        direction="row"
+        justifyContent="space-between"
+        overflow={"scroll"}
+        sx={{
+          "&::-webkit-scrollbar": {
+            width: "8px",
+            height: "8px",
+          },
+          "::-webkit-scrollbar-thumb": {
+            borderRadius: "10px",
+          },
+          "&:hover": {
+            "::-webkit-scrollbar-thumb": {
+              background: "rgba(0,0,0,0.2)",
+              dragble: true,
+            },
+          },
+        }}
+      >
         {[1, 2, 3, 4].map((value) => {
           return (
             <ProductCard

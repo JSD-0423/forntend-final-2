@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
+import StyledLink from "../styles";
 
-const ActionLink = ({ action, component, isUnderLined = false }) => {
+const ActionLink = ({ action, component, isUnderLined = false, isRemove }) => {
   // isRemove indicates if the link is used for deleting something
   return (
-    <Link
+    <StyledLink
       onClick={() => {
         action();
       }}
-      style={{ textDecoration: isUnderLined ? "underline" : "none" }}
+      isUnderLined={isUnderLined}
+      isRemove={isRemove}
     >
       {component}
-    </Link>
+    </StyledLink>
   );
 };
 
