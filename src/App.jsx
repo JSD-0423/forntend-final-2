@@ -1,15 +1,15 @@
 import Header from "./components/header";
-import { Stack, ThemeProvider, Typography, Button } from "@mui/material";
+import { Stack, ThemeProvider } from "@mui/material";
 import theme from "./themes/theme";
 import { BrowserRouter } from "react-router-dom";
 import Footer from "./components/footer";
-import Home from "./pages/home";
 
+import { AiOutlineShoppingCart } from "react-icons/ai";
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <Home />
+        <Header />
         <Footer />
       </ThemeProvider>
     </BrowserRouter>
