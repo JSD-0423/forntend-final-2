@@ -1,6 +1,7 @@
 import { Box, IconButton, Typography, Stack } from "@mui/material";
 import heartIcon from "../../assets/icons/heart-secondary.svg";
 import NavLink from "../links/nav-link";
+import theme from "../../themes/theme";
 
 const ProductCard = ({
   name,
@@ -13,17 +14,22 @@ const ProductCard = ({
 }) => {
   // The price could be on sale or not, also a rating can be added to the card
   return (
-    <Stack direction={"column"} sx={{ gap: "9px" }}>
+    <Stack width={"100%"} direction={"column"} sx={{ gap: "9px" }}>
       <NavLink
+        style={{ width: "100%" }}
         component={
           <Box
             sx={{
               height: "286px",
-              width: "286px",
+              width: "%100",
               backgroundImage: `url('${image}')`,
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundSize: "cover",
+
+              [theme.breakpoints.down("sm")]: {
+                height: "138px",
+              },
             }}
           />
         }
