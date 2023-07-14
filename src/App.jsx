@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import Footer from './components/footer';
 import Banner from "./pages/home/banner-section";
 
+
 function App() {
   return (
     <BrowserRouter>
