@@ -1,6 +1,7 @@
 import { Stack, Typography, Grid } from "@mui/material";
 import BrandItem from "../../../components/brand-item";
 import theme from "../../../themes/theme";
+import NavLink from "../../../components/links/nav-link";
 
 const BrandsSection = () => {
   return (
@@ -32,7 +33,12 @@ const BrandsSection = () => {
         }}
       >
         {[1, 2, 3, 4, 5, 6].map((value) => {
-          return <BrandItem key={value} image="images/brand.png" />;
+          return (
+            <NavLink
+              key={value}
+              component={<BrandItem image="images/brand.png" />}
+            />
+          );
         })}
       </Stack>
     </Stack>

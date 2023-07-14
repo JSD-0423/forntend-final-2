@@ -70,4 +70,11 @@ theme.typography.body1 = {
   },
 };
 
+theme.typography.h1 = {
+  fontSize: "0.9rem",
+  fontWeight: 500,
+  color: theme.palette.highEmphasis.main,
+  fontFamily: ["Inter", "sans-serif"].join(","),
+};
+
 export default theme;
