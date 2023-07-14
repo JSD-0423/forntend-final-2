@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Typography,
-  Link,
-  Divider,
-  Stack,
-} from "@mui/material";
+import { Container, Typography, Link, Divider, Stack } from "@mui/material";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -17,7 +11,7 @@ const Footer = () => {
       <Stack
         direction={{ xs: "column", sm: "row" }}
         justifyContent="space-between"
-        sx={{ padding: "30px", paddingBottom:"70px" }}
+        sx={{ padding: "30px", paddingBottom: "70px" }}
         spacing={3}
       >
         <Stack
@@ -45,8 +39,15 @@ const Footer = () => {
             <Link sx={{ color: "lightText.main" }}>brands </Link>
           </Stack>
         </Stack>
-        <Stack spacing={2} >
-        <Divider sx={{ width: "100%", height: "1px", bgcolor: "primary.tint", display:{xs:"block",sm:"none"} }}  /> 
+        <Stack spacing={2}>
+          <Divider
+            sx={{
+              width: "100%",
+              height: "1px",
+              bgcolor: "primary.tint",
+              display: { xs: "block", sm: "none" },
+            }}
+          />
           <Stack
             direction="row"
             gap={2}
@@ -77,10 +78,9 @@ const Footer = () => {
               </Typography>
             </Stack>
             <Typography sx={{ color: "lightText.main" }}>
-            © 2021 | Cora Leviene All Rights Reserved
-          </Typography>
+              © 2021 | Cora Leviene All Rights Reserved
+            </Typography>
           </Stack>
-          
         </Stack>
       </Stack>
     </Container>
