@@ -4,6 +4,7 @@ import heartIconFilled from "../../assets/icons/heart-black-filled.svg";
 import NavLink from "../links/nav-link";
 import theme from "../../themes/theme";
 import RatingStars from "../rating-stars";
+import ButtonWithIcon from "../buttons/button-with-Icon";
 
 const ProductCard = ({
   data,
@@ -13,7 +14,16 @@ const ProductCard = ({
 }) => {
   // The price could be on sale or not, also a rating can be added to the card
   return (
-    <Stack width={"100%"} direction={"column"} sx={{ gap: "9px" }}>
+    <Stack
+      width={"100%"}
+      direction={"column"}
+      sx={{
+        gap: "9px",
+        [theme.breakpoints.down("sm")]: {
+          gap: 1,
+        },
+      }}
+    >
       <NavLink
         style={{ width: "100%" }}
         component={
@@ -34,25 +44,51 @@ const ProductCard = ({
         }
       />
 
-      <Stack direction={"column"} justifyContent={"space-between"} gap={1}>
-        <Stack direction={"row"} justifyContent={"space-between"}>
-          <Typography>{data?.name}</Typography>
+      <Stack
+        direction={"row"}
+        alignItems={"start"}
+        justifyContent={"space-between"}
+      >
+        <Stack
+          direction={"column"}
+          justifyContent={"space-between"}
+          gap={1}
+          sx={{
+            [theme.breakpoints.down("sm")]: {
+              gap: 0.4,
+            },
+          }}
+        >
+          <Typography variant="body2">{data?.name}</Typography>
 
-          <IconButton
+          {data.rating ? <RatingStars rating={data?.rating} /> : null}
+          <Typography
+            sx={{
+              [theme.breakpoints.down("sm")]: {
+                fontSize: "0.75rem",
+              },
+            }}
+            color={"grey"}
+          >
+            {data?.category}
+          </Typography>
+          <Box>{price}</Box>
+        </Stack>
+
+        <Box sx={{ margin: "-4px -7px 0 0" }}>
+          <ButtonWithIcon
             onClick={() => {
               favouritesAction?.();
             }}
-          >
-            {isInFavourites ? (
-              <img src={heartIconFilled} alt="heart icon" />
-            ) : (
-              <img src={heartIcon} alt="heart icon" />
-            )}
-          </IconButton>
-        </Stack>
-        {data.rating ? <RatingStars rating={data?.rating} /> : null}
-        <Typography color={"grey"}>{data?.category}</Typography>
-        <Box>{price}</Box>
+            icon={
+              isInFavourites ? (
+                <img src={heartIconFilled} alt="heart icon" />
+              ) : (
+                <img src={heartIcon} alt="heart icon" />
+              )
+            }
+          />
+        </Box>
       </Stack>
     </Stack>
   );
