@@ -1,15 +1,14 @@
 import { Box, IconButton, Typography, Stack } from "@mui/material";
-import heartIcon from "../../assets/icons/heart-secondary.svg";
+import heartIcon from "../../assets/icons/heart-black.svg";
+import heartIconFilled from "../../assets/icons/heart-black-filled.svg";
 import NavLink from "../links/nav-link";
 import theme from "../../themes/theme";
+import RatingStars from "../rating-stars";
 
 const ProductCard = ({
-  name,
-  category,
+  data,
+  isInFavourites = false,
   price,
-  rating,
-  isInFavourites,
-  image,
   favouritesAction,
 }) => {
   // The price could be on sale or not, also a rating can be added to the card
@@ -22,7 +21,7 @@ const ProductCard = ({
             sx={{
               height: "286px",
               width: "%100",
-              backgroundImage: `url('${image}')`,
+              backgroundImage: `url('${data?.image}')`,
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundSize: "cover",
@@ -37,10 +36,22 @@ const ProductCard = ({
 
       <Stack direction={"column"} justifyContent={"space-between"} gap={1}>
         <Stack direction={"row"} justifyContent={"space-between"}>
-          <Typography>{name}</Typography>
-          <img src={heartIcon} alt="heart icon" style={{ color: "black" }} />
+          <Typography>{data?.name}</Typography>
+
+          <IconButton
+            onClick={() => {
+              favouritesAction?.();
+            }}
+          >
+            {isInFavourites ? (
+              <img src={heartIconFilled} alt="heart icon" />
+            ) : (
+              <img src={heartIcon} alt="heart icon" />
+            )}
+          </IconButton>
         </Stack>
-        <Typography color={"grey"}>{category}</Typography>
+        {data.rating ? <RatingStars rating={data?.rating} /> : null}
+        <Typography color={"grey"}>{data?.category}</Typography>
         <Box>{price}</Box>
       </Stack>
     </Stack>

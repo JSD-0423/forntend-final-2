@@ -1,4 +1,4 @@
-import { IconButton, Stack } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import StyledButton from "../styles";
 
 const ButtonWithIcon = ({

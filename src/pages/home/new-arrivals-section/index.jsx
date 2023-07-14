@@ -1,11 +1,20 @@
 import FinalPrice from "../../../components/price/final-price";
 import ProductCard from "../../../components/product-card";
-import purse from "../../../assets/images/purse.png";
 import { Box, Container, Typography, Stack } from "@mui/material";
 import HorizontalScrollSection from "../../../components/horizontal-scroll-section";
 import theme from "../../../themes/theme";
+import ButtonWithIcon from "../../../components/buttons/button-with-Icon";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import NavLink from "../../../components/links/nav-link";
 
 const NewArrivalsSection = () => {
+  const data = {
+    image: "images/purse.png",
+    name: "Grande",
+    category: "Blossom Pouch",
+    price: "$39.49",
+  };
+
   return (
     <Stack
       sx={{
@@ -16,9 +25,19 @@ const NewArrivalsSection = () => {
       component={"section"}
       direction={"column"}
     >
-      <Box>
+      <Stack justifyContent={"space-between"} direction={"row"}>
         <Typography variant="h3">New Arrivals</Typography>
-      </Box>
+        <NavLink
+          component={
+            <ButtonWithIcon
+              isIconStart={false}
+              type={"text"}
+              text={"View All"}
+              icon={<ArrowForwardIosIcon color={"highEmphasis"} />}
+            />
+          }
+        />
+      </Stack>
       <HorizontalScrollSection
         gap={5}
         direction="row"
@@ -38,10 +57,8 @@ const NewArrivalsSection = () => {
               }}
             >
               <ProductCard
-                image={purse}
-                name="Grande"
-                price={<FinalPrice price={"$39.49"} />}
-                category={"Blossom Pouch"}
+                data={data}
+                price={<FinalPrice price={data.price} />}
               />
             </Box>
           );
