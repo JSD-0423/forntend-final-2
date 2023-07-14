@@ -1,8 +1,17 @@
 import { Typography } from "@mui/material";
+import theme from "../../../themes/theme";
 
 const FinalPrice = ({ price }) => {
   return (
-    <Typography sx={{ fontWeight: 500 }} color={"highEmphasis"}>
+    <Typography
+      variant="body2"
+      sx={{
+        [theme.breakpoints.down("sm")]: {
+          fontSize: "1rem",
+        },
+      }}
+      color={"highEmphasis"}
+    >
       {price}
     </Typography>
   );

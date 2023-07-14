@@ -20,20 +20,33 @@ const NewArrivalsSection = () => {
       sx={{
         paddingLeft: "20px",
         paddingBottom: "32px",
-        gap: 2.5,
+        gap: 3,
+        [theme.breakpoints.down("sm")]: {
+          gap: 1,
+        },
       }}
       component={"section"}
       direction={"column"}
     >
-      <Stack justifyContent={"space-between"} direction={"row"}>
-        <Typography variant="h3">New Arrivals</Typography>
+      <Stack
+        justifyContent={"space-between"}
+        sx={{
+          [theme.breakpoints.down("sm")]: {
+            alignItems: "center",
+          },
+        }}
+        direction={"row"}
+      >
+        <Typography variant="h2">New Arrivals</Typography>
         <NavLink
           component={
             <ButtonWithIcon
               isIconStart={false}
               type={"text"}
               text={"View All"}
-              icon={<ArrowForwardIosIcon color={"highEmphasis"} />}
+              icon={
+                <ArrowForwardIosIcon fontSize="20px" color={"highEmphasis"} />
+              }
             />
           }
         />
