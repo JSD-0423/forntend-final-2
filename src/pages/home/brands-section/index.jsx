@@ -1,4 +1,4 @@
-import { Stack, Typography, Grid } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import BrandItem from "../../../components/brand-item";
 import theme from "../../../themes/theme";
 

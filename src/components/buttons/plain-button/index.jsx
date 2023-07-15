@@ -6,9 +6,9 @@ const PlainButton = ({ type = "text", text, action }) => {
 
   return (
     <StyledButton
-      //   onClick={() => {
-      //     action();
-      //   }}
+      onClick={() => {
+        action?.();
+      }}
       variant={type}
       color="primary"
     >
