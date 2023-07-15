@@ -38,7 +38,6 @@ const theme = createTheme({
   },
 });
 
-<<<<<<< HEAD
 theme.typography.h2 = {
   fontSize: "2rem",
   fontWeight: "600",
@@ -70,9 +69,6 @@ theme.typography.body1 = {
     fontWeight: 500,
   },
 };
-=======
-
->>>>>>> 2fc44e02015ba6c90516b586bbd70859fa21386a
 
 theme.typography.h1 = {
   fontSize: "0.9rem",
