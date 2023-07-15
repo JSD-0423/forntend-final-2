@@ -16,7 +16,7 @@ const Banner = () => {
     >
       <Grid container spacing={{ xs: 2, md: 5 }}>
         <Grid item xs={12}>
-          <PlainSlide image={plainSlide}>
+          <PlainSlide image={plainSlide} heightPic={{xs:"140px",sm:"200px",md:"300px",lg:"400px"}}>
             <Stack
               gap={{ xs: 1, sm: 1.5, lg: 3 }}
               alignItems="end"
@@ -40,7 +40,7 @@ const Banner = () => {
           </PlainSlide>
         </Grid>
         <Grid item xs={6}>
-          <PlainSlide image={skinCare}>
+          <PlainSlide image={skinCare} heightPic={{xs:"100px",sm:"130px",md:"180px",lg:"230px"}}>
             <PlainContent
               color="#A53F64"
               text="15% off and more!"
@@ -49,7 +49,7 @@ const Banner = () => {
           </PlainSlide>
         </Grid>
         <Grid item xs={6} position="relative">
-          <PlainSlide image={facePack}>
+          <PlainSlide image={facePack} heightPic={{xs:"100px",sm:"130px",md:"180px",lg:"230px"}}>
             <PlainContent
               color="primary.main"
               text="Popular in the community!"
