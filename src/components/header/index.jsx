@@ -7,7 +7,6 @@ import heartIcon from "../../assets/icons/heart-primary.svg";
 import userIcon from "../../assets/icons/user.svg";
 import bagIcon from "../../assets/icons/bag.svg";
 import NavLink from "../links/nav-link";
-import ButtonWithIcon from "../buttons/button-with-Icon";
 
 const Header = () => {
   return (
@@ -56,7 +55,7 @@ const Header = () => {
           />
         </Box>
       </Stack>
-      {/* TODO: Wrap icons with buttons */}
+      {/* TODO: change Icon Button to buttonWithIcon */}
       <Stack gap={2} direction={"row"} justifyContent={"space-between"}>
         {[heartIcon, userIcon, bagIcon].map((icon) => {
           return (

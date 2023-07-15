@@ -8,7 +8,7 @@ const DefaultInput = ({
   isAdormentStart = true,
   text = "",
   type,
-  size,
+  size = "1rem",
   handler,
 }) => {
   // {type} prop can be: "filled", "outlined", or "standard"
