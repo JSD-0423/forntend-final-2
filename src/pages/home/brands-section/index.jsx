@@ -7,9 +7,7 @@ const BrandsSection = () => {
   return (
     <Stack
       sx={{
-        paddingLeft: "20px",
         paddingBottom: "32px",
-        paddingRight: "20px",
         gap: 3,
         [theme.breakpoints.down("sm")]: {
           gap: 1,
