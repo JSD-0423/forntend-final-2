@@ -22,7 +22,7 @@ const BrandsSection = () => {
       <Stack
         sx={{
           display: "grid",
-          justifyItems: "center",
+
           gridTemplateColumns: "repeat(auto-fit,minmax(168px,1fr))",
           rowGap: "20px",
           columnGap: "24px",
