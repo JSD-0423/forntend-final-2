@@ -6,16 +6,15 @@ const StyledImage = styled("img")({
   width: "100%",
   objectFit: "cover",
   borderRadius: "16px",
-  maxHeight: "500px",
-  minHeight:"100px"
 });
 
-const PlainSlide = ({children,image}) => {
+const PlainSlide = ({children,image,heightPic}) => {
   return (
     <Box position="relative"  >
     <StyledImage
       src={image}
       alt="Product"
+      sx={{height:heightPic}}
     ></StyledImage>
     {children} 
   </Box>

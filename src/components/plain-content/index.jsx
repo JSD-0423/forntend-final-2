@@ -21,10 +21,10 @@ const PlainContent = ({color,text,fontSize}) => {
                   xs: "0.8rem",
                   sm: "1.1rem",
                   md: "1.9rem",
-                  lg: "2.5rem",
+                  lg: "2.3rem",
                 }}
                 sx={{
-                  color: {color},
+                  color: `${color}`,
                   lineHeight: { xs: "18px", md: "40px" ,lg:"52px"},
                   textAlign: "right",
                 }}
