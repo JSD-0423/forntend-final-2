@@ -12,10 +12,10 @@ const Banner = () => {
   return (
     <Container
       maxWidth="100%"
-      sx={{ margin: { xs: "30px 0", sm: "50px 0", md: "80px 0" } }}
+      sx={{ margin: { xs: "30px 0", sm: "50px 0", md: "80px 0" }}}
     >
-      <Grid container spacing={{ xs: 2, md: 5 }}>
-        <Grid item xs={12}>
+      <Grid container spacing={{ xs: 2, md: 5 }} >
+        <Grid item xs={12} >
           <PlainSlide image={plainSlide} heightPic={{xs:"140px",sm:"200px",md:"300px",lg:"400px"}}>
             <Stack
               gap={{ xs: 1, sm: 1.5, lg: 3 }}
@@ -33,6 +33,7 @@ const Banner = () => {
                   sm: "1.5rem",
                   md: "2.3rem",
                 }}
+                color="#97451F"
               >
                 limited edition products
               </Typography>

@@ -1,4 +1,11 @@
 import { Stack } from "@mui/material";
-import styled from "@emotion/styled";
+import { styled } from "@mui/material/styles";
 
-const StyledStack = styled()(({ theme }) => ({}));
+// TODO: fix browser compatibility issues, "make sure the scrollbar behaves the same on all browsers"
+const StyledStack = styled(Stack)(({ theme }) => ({
+  "&::-webkit-scrollbar": {
+    display: "none",
+  },
+}));
+
+export default StyledStack;

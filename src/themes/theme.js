@@ -38,10 +38,36 @@ const theme = createTheme({
   },
 });
 
-theme.typography.h3 = {
+theme.typography.h2 = {
   fontSize: "2rem",
   fontWeight: "600",
+  color: theme.palette.dark.main,
   fontFamily: ["Inter", "sans-serif"].join(","),
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.9rem",
+  },
+};
+
+theme.typography.body2 = {
+  fontSize: "1rem",
+  fontWeight: 500,
+  color: theme.palette.highEmphasis.main,
+  fontFamily: ["Inter", "sans-serif"].join(","),
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.9rem",
+    fontWeight: 600,
+  },
+};
+
+theme.typography.body1 = {
+  fontSize: "1rem",
+  fontWeight: 500,
+  color: theme.palette.lowEmphasis.main,
+  fontFamily: ["Inter", "sans-serif"].join(","),
+  [theme.breakpoints.down("sm")]: {
+    fontSize: "0.9rem",
+    fontWeight: 500,
+  },
 };
 
 export default theme;

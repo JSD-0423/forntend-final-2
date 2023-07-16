@@ -12,7 +12,9 @@ const ButtonWithIcon = ({
   if (!text)
     return (
       <IconButton
-      //   onClick={() => {action();}}
+        onClick={() => {
+          action?.();
+        }}
       >
         {icon}
       </IconButton>

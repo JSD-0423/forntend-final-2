@@ -13,7 +13,7 @@ const HeroSection = () => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   return (
-    <Container maxWidth="100%">
+    <Container maxWidth="100%" sx={{ margin: { xs: "30px 0", sm: "50px 0", md: "80px 0" } }}>
       <Carousel
         indicators={false}
         duration={1000}
@@ -37,7 +37,7 @@ const HeroSection = () => {
             }}
           >
             <Stack marginBottom={2}>
-            <Typography fontSize={{xs:"1rem",md:"2rem",lg:"3.5rem"}} sx={{ color: "primary.main" }}>
+            <Typography fontSize={{xs:"1rem",md:"2rem",lg:"3.5rem"}} sx={{ color: "primary.main" }} fontWeight={800}>
               Carry your Funk
             </Typography>
             <Typography
@@ -51,7 +51,7 @@ const HeroSection = () => {
             <Box display={isSmallScreen ?"none":"block"}>
             <ButtonWithIcon
                 icon={<TrendingFlatIcon fontSize="50px"/>}
-                text={<Typography fontSize={{xs:"10px",md:"18px",lg:"25px"}}>See More</Typography>}
+                text={<Typography fontSize={{xs:"10px",md:"18px",lg:"25px"}} color="#fff">See More</Typography>}
                 type="contained"
               />
             </Box>
