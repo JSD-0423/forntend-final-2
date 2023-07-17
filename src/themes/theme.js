@@ -36,6 +36,23 @@ const theme = createTheme({
   typography: {
     fontFamily: ["Inter", "sans-serif"].join(","),
   },
+  components: {
+    MuiStack: {
+      styleOverrides: {
+        root: (owner) => ({
+          // Centralized control over website padding:
+          ...(owner.as === "section" && {
+            paddingLeft: "20px",
+            paddingRight: "20px",
+            [theme.breakpoints.down("sm")]: {
+              paddingLeft: "16px",
+              paddingRight: "16px",
+            },
+          }),
+        }),
+      },
+    },
+  },
 });
 
 theme.typography.h2 = {
