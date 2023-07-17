@@ -84,12 +84,11 @@ const Header = () => {
       sx={{
         paddingTop: "30px",
         paddingBottom: "30px",
-        paddingLeft: "20px",
-        paddingRight: "20px",
       }}
       direction="row"
       justifyContent="space-between"
       alignItems="center"
+      component={"section"}
     >
       <Stack
         direction={"row"}
