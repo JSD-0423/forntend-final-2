@@ -23,12 +23,20 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import { useState } from "react";
 
-const Header = ({ Categories }) => {
+const Header = () => {
   const isLaptop = useMediaQuery((theme) => theme.breakpoints.down("lg"));
   const isTablet = useMediaQuery((theme) => theme.breakpoints.down("md"));
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isMobileOpen, setMobileOpen] = useState(false);
+
+  const categories = [
+    "Handbags",
+    "Watches",
+    "Skincare",
+    "Jewellery",
+    "Apperels",
+  ];
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -40,15 +48,13 @@ const Header = ({ Categories }) => {
         <ListItemText primary={"Categories"} />
       </ListItem>
       <Divider />
-      {["Handbags", "Watches", "Skincare", "Jewellery", "Apperels"].map(
-        (text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        )
-      )}
+      {categories.map((text) => (
+        <ListItem key={text} disablePadding>
+          <ListItemButton>
+            <ListItemText primary={text} />
+          </ListItemButton>
+        </ListItem>
+      ))}
       <Divider />
       {[heartIcon, userIcon, bagIcon].map((icon, index) => {
         return isMobile ? (
@@ -107,16 +113,14 @@ const Header = ({ Categories }) => {
             justifyContent="space-between"
             gap={3}
           >
-            {["Handbags", "Watches", "Skincare", "Jewellery", "Apperels"].map(
-              (text, index) => {
-                return (
-                  <NavLink
-                    component={<Typography variant="h1">{text}</Typography>}
-                    key={index}
-                  />
-                );
-              }
-            )}
+            {categories.map((text, index) => {
+              return (
+                <NavLink
+                  component={<Typography variant="h1">{text}</Typography>}
+                  key={index}
+                />
+              );
+            })}
           </Stack>
         )}
       </Stack>
@@ -145,9 +149,8 @@ const Header = ({ Categories }) => {
         </Stack>
       </Stack>
       <Drawer
-        // container={container}
         variant="temporary"
-        open={mobileOpen}
+        open={isMobileOpen}
         onClose={handleDrawerToggle}
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
