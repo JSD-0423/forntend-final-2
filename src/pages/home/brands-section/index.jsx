@@ -21,12 +21,12 @@ const BrandsSection = () => {
       <Stack
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(168px,1fr))",
+          gridTemplateColumns: "repeat(auto-fit,minmax(168px,168px))",
           rowGap: "40px",
           columnGap: "24px",
-          justifyContent: "center",
+          justifyContent: "space-between",
           [theme.breakpoints.down("sm")]: {
-            gridTemplateColumns: "repeat(auto-fit,minmax(100px,1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(100px,100px))",
             columnGap: "16px",
           },
         }}
