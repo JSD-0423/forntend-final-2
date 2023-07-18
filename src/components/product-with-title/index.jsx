@@ -18,11 +18,10 @@ const ProductWithTitle = ({ title = "", image }) => {
           [theme.breakpoints.down("sm")]: {
             marginLeft: "10px",
             marginBottom: "10px",
-            fontSize: "14px",
             fontWeight: 500,
           },
           color: theme.palette.highEmphasis.main,
-          fontSize: "24px",
+          fontSize: "1.7vw",
           fontWeight: 600,
         }}
       >

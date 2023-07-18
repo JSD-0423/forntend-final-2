@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Stack, Typography} from "@mui/material";
+import { Container, Grid, Stack, Typography } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
 import PlainSlide from "../../../components/plain-slide";
 import plainSlide from "../../../assets/images/plainSlide.png";
@@ -12,11 +12,14 @@ const Banner = () => {
   return (
     <Container
       maxWidth="100%"
-      sx={{ margin: { xs: "30px 0", sm: "50px 0", md: "80px 0" }}}
+      sx={{ marginBottom: { xs: "30px", sm: "50px", md: "80px" } }}
     >
-      <Grid container spacing={{ xs: 2, md: 5 }} >
-        <Grid item xs={12} >
-          <PlainSlide image={plainSlide} heightPic={{xs:"140px",sm:"200px",md:"300px",lg:"400px"}}>
+      <Grid container spacing={{ xs: 2, md: 5 }}>
+        <Grid item xs={12}>
+          <PlainSlide
+            image={plainSlide}
+            heightPic={{ xs: "140px", sm: "200px", md: "300px", lg: "400px" }}
+          >
             <Stack
               gap={{ xs: 1, sm: 1.5, lg: 3 }}
               alignItems="end"
@@ -41,7 +44,10 @@ const Banner = () => {
           </PlainSlide>
         </Grid>
         <Grid item xs={6}>
-          <PlainSlide image={skinCare} heightPic={{xs:"100px",sm:"130px",md:"180px",lg:"230px"}}>
+          <PlainSlide
+            image={skinCare}
+            heightPic={{ xs: "100px", sm: "130px", md: "180px", lg: "230px" }}
+          >
             <PlainContent
               color="#A53F64"
               text="15% off and more!"
@@ -50,7 +56,10 @@ const Banner = () => {
           </PlainSlide>
         </Grid>
         <Grid item xs={6} position="relative">
-          <PlainSlide image={facePack} heightPic={{xs:"100px",sm:"130px",md:"180px",lg:"230px"}}>
+          <PlainSlide
+            image={facePack}
+            heightPic={{ xs: "100px", sm: "130px", md: "180px", lg: "230px" }}
+          >
             <PlainContent
               color="primary.main"
               text="Popular in the community!"
