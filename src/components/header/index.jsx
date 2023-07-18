@@ -123,7 +123,11 @@ const Header = () => {
           </Stack>
         )}
       </Stack>
-      <Stack direction={"row"} gap={3} justifyContent={"space-between"}>
+      <Stack
+        direction={"row"}
+        gap={isMobile ? 0 : 3}
+        justifyContent={"space-between"}
+      >
         <Box
           sx={{
             width: isLaptop ? "200px" : "362px",

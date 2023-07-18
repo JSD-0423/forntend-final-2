@@ -24,14 +24,13 @@ const HandPickedSection = () => {
       <Stack
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
+          gridTemplateColumns: "repeat(auto-fit,minmax(280px,280px))",
           rowGap: "40px",
           columnGap: "24px",
-          alignItems: "center",
+          justifyContent: "space-between",
           [theme.breakpoints.down("sm")]: {
-            gridTemplateColumns: "repeat(auto-fit,minmax(156px,1fr))",
+            gridTemplateColumns: "repeat(auto-fit,minmax(156px,156px))",
             columnGap: "16px",
-            rowGap: "16px",
           },
         }}
       >
