@@ -36,6 +36,23 @@ const theme = createTheme({
   typography: {
     fontFamily: ["Inter", "sans-serif"].join(","),
   },
+  components: {
+    MuiStack: {
+      styleOverrides: {
+        root: (owner) => ({
+          // Centralized control over website padding:
+          ...(owner.as === "section" && {
+            paddingLeft: "20px",
+            paddingRight: "20px",
+            [theme.breakpoints.down("sm")]: {
+              paddingLeft: "16px",
+              paddingRight: "16px",
+            },
+          }),
+        }),
+      },
+    },
+  },
 });
 
 theme.typography.h2 = {
@@ -68,6 +85,13 @@ theme.typography.body1 = {
     fontSize: "0.9rem",
     fontWeight: 500,
   },
+};
+
+theme.typography.h1 = {
+  fontSize: "0.9rem",
+  fontWeight: 500,
+  color: theme.palette.highEmphasis.main,
+  fontFamily: ["Inter", "sans-serif"].join(","),
 };
 
 export default theme;

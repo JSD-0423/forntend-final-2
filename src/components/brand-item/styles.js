@@ -1,5 +1,4 @@
 import { styled } from "@mui/material/styles";
-import theme from "../../themes/theme";
 
 const StyledImage = styled("img")(({ theme }) => ({
   height: "168px",

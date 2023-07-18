@@ -1,14 +1,14 @@
 import { Stack, Typography } from "@mui/material";
 import BrandItem from "../../../components/brand-item";
 import theme from "../../../themes/theme";
+import NavLink from "../../../components/links/nav-link";
 
 const BrandsSection = () => {
   return (
     <Stack
       sx={{
-        paddingLeft: "20px",
-        paddingBottom: "32px",
-        paddingRight: "20px",
+        paddingBottom: "67px",
+        paddingTop: "67px",
         gap: 3,
         [theme.breakpoints.down("sm")]: {
           gap: 1,
@@ -21,10 +21,10 @@ const BrandsSection = () => {
       <Stack
         sx={{
           display: "grid",
-          justifyItems: "center",
           gridTemplateColumns: "repeat(auto-fit,minmax(168px,1fr))",
-          rowGap: "20px",
+          rowGap: "40px",
           columnGap: "24px",
+          justifyContent: "center",
           [theme.breakpoints.down("sm")]: {
             gridTemplateColumns: "repeat(auto-fit,minmax(100px,1fr))",
             columnGap: "16px",
@@ -32,7 +32,12 @@ const BrandsSection = () => {
         }}
       >
         {[1, 2, 3, 4, 5, 6].map((value) => {
-          return <BrandItem key={value} image="images/brand.png" />;
+          return (
+            <NavLink
+              key={value}
+              component={<BrandItem image="images/brand.png" />}
+            />
+          );
         })}
       </Stack>
     </Stack>

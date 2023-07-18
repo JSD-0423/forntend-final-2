@@ -18,8 +18,6 @@ const NewArrivalsSection = () => {
   return (
     <Stack
       sx={{
-        paddingLeft: "20px",
-        paddingRight: "20px",
         paddingBottom: "32px",
         gap: 3,
         [theme.breakpoints.down("sm")]: {
