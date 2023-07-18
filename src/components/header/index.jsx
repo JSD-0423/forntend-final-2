@@ -61,7 +61,7 @@ const Header = () => {
           <ListItem key={index}>
             <ListItemButton>
               <ListItemIcon>
-                <img src={icon} />
+                <img alt="icon" src={icon} />
               </ListItemIcon>
               <ListItemText
                 primary={
@@ -101,7 +101,7 @@ const Header = () => {
             display: isLaptop ? "none" : "block",
           }}
         >
-          <img src={Logo} />
+          <img alt="logo" src={Logo} />
         </Box>
         {isTablet ? (
           <ButtonWithIcon action={handleDrawerToggle} icon={<MenuIcon />} />
@@ -145,7 +145,7 @@ const Header = () => {
           {[heartIcon, userIcon, bagIcon].map((icon, index) => {
             return !isMobile ? (
               <IconButton key={index} sx={{ padding: "0px" }}>
-                <img src={icon} />
+                <img alt="icon" src={icon} />
               </IconButton>
             ) : null;
           })}

@@ -21,13 +21,15 @@ const BrandsSection = () => {
       <Stack
         sx={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(168px,168px))",
-          rowGap: "40px",
-          columnGap: "24px",
+          gridTemplateColumns: "repeat(auto-fit,minmax(168px,1fr))",
+          rowGap: "24px",
+          columnGap: "40px",
           justifyContent: "space-between",
-          [theme.breakpoints.down("sm")]: {
-            gridTemplateColumns: "repeat(auto-fit,minmax(100px,100px))",
-            columnGap: "16px",
+          [theme.breakpoints.down("400px")]: {
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            flexBasis: "168px",
           },
         }}
       >

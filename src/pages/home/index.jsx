@@ -7,11 +7,11 @@ import HeroSection from "../../components/hero-section";
 const Home = () => {
   return (
     <>
+      <HeroSection />
       <NewArrivalsSection />
       <HandPickedSection />
-      <Banner />
-      <HeroSection />
       <BrandsSection />
+      <Banner />
     </>
   );
 };

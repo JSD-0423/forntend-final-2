@@ -1,6 +1,5 @@
 import { InputAdornment } from "@mui/material";
 import StyledTextField from "../styles";
-import { TextField } from "@mui/material";
 
 const DefaultInput = ({
   adorment = null,

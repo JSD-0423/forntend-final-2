@@ -12,7 +12,7 @@ const Banner = () => {
   return (
     <Container
       maxWidth="100%"
-      sx={{ margin: { xs: "30px 0", sm: "50px 0", md: "80px 0" } }}
+      sx={{ marginBottom: { xs: "30px", sm: "50px", md: "80px" } }}
     >
       <Grid container spacing={{ xs: 2, md: 5 }}>
         <Grid item xs={12}>
