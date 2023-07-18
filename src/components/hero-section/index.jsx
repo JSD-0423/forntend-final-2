@@ -13,7 +13,7 @@ const HeroSection = () => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   return (
-    <Container maxWidth="100%" sx={{ margin: { xs: "30px 0", sm: "50px 0", md: "80px 0" } }}>
+    <Container maxWidth="100%" sx={{ margin: { xs: "30px 0", sm: "50px 0", md: "80px 0" } }} >
       <Carousel
         indicators={false}
         duration={1000}
