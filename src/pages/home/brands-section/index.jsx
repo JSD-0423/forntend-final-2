@@ -1,21 +1,21 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Container } from "@mui/material";
 import BrandItem from "../../../components/brand-item";
 import theme from "../../../themes/theme";
 import NavLink from "../../../components/links/nav-link";
 
 const BrandsSection = () => {
   return (
-    <Stack
+    <Container
       sx={{
         paddingBottom: "67px",
         paddingTop: "67px",
         gap: 3,
+        display: "flex",
+        flexDirection: "column",
         [theme.breakpoints.down("sm")]: {
           gap: 1,
         },
       }}
-      component={"section"}
-      direction={"column"}
     >
       <Typography variant="h2">Shop by Brands</Typography>
       <Stack
@@ -43,7 +43,7 @@ const BrandsSection = () => {
           );
         })}
       </Stack>
-    </Stack>
+    </Container>
   );
 };
 

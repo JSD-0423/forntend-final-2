@@ -16,18 +16,17 @@ const NewArrivalsSection = () => {
   };
 
   return (
-    <Stack
+    <Container
       sx={{
-        paddingLeft: "20px",
-        paddingRight: "20px",
         paddingBottom: "32px",
         gap: 3,
+        display: "flex",
+        flexDirection: "column",
         [theme.breakpoints.down("sm")]: {
           gap: 1,
         },
       }}
       component={"section"}
-      direction={"column"}
     >
       <Stack
         justifyContent={"space-between"}
@@ -78,7 +77,7 @@ const NewArrivalsSection = () => {
           );
         })}
       </HorizontalScrollSection>
-    </Stack>
+    </Container>
   );
 };
 
