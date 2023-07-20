@@ -22,14 +22,15 @@ const BrandsSection = () => {
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(168px,1fr))",
-          rowGap: "24px",
-          columnGap: "40px",
+          rowGap: "46px",
+          columnGap: "46px",
           justifyContent: "space-between",
-          [theme.breakpoints.down("400px")]: {
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            flexBasis: "168px",
+          [theme.breakpoints.down("sm")]: {
+            rowGap: "24px",
+            columnGap: "16px",
+          },
+          [theme.breakpoints.down("400")]: {
+            gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))",
           },
         }}
       >

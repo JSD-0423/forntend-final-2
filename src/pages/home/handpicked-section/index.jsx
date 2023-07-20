@@ -25,15 +25,15 @@ const HandPickedSection = () => {
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(156px,1fr))",
-          rowGap: "24px",
+          rowGap: "40px",
           columnGap: "40px",
           justifyContent: "space-between",
           [theme.breakpoints.down("sm")]: {
             rowGap: "16px",
+            columnGap: "16px",
           },
-          [theme.breakpoints.down("384px")]: {
-            gridTemplateColumns: "repeat(auto-fit,minmax(100px,100px))",
-            justifyContent: "center",
+          [theme.breakpoints.down("384")]: {
+            gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))",
           },
         }}
       >
