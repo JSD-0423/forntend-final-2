@@ -25,6 +25,7 @@ const ProductCard = ({
       }}
     >
       <NavLink
+        path="./product"
         style={{ width: "100%" }}
         component={
           <Box
