@@ -65,7 +65,7 @@ const HeroSection = () => {
                 Trendy handbags collection for your party animal
               </Typography>
             </Stack>
-            <Box display={isSmallScreen ? "none" : "block"}>
+            <Box display={isSmallScreen ? "none" : "block"} width={{xs:"32%",md:"40%",lg:"30%"}}>
               <ButtonWithIcon
                 icon={<TrendingFlatIcon style={{ fontSize: "2vw" }} />}
                 text={

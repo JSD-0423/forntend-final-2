@@ -12,7 +12,7 @@ const NewArrivalsSection = () => {
     image: "images/purse.png",
     name: "Grande",
     category: "Blossom Pouch",
-    price: "$39.49",
+    price: 39.49,
   };
 
   return (
