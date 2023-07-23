@@ -37,6 +37,7 @@ const BrandsSection = () => {
         {[1, 2, 3, 4, 5, 6].map((value) => {
           return (
             <NavLink
+              path="./category"
               key={value}
               component={<BrandItem image="images/brand.png" />}
             />

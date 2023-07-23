@@ -1,14 +1,21 @@
-import { Box, IconButton, Typography, Stack } from "@mui/material";
+import { Box, Typography, Stack } from "@mui/material";
 import heartIcon from "../../assets/icons/heart-black.svg";
 import heartIconFilled from "../../assets/icons/heart-black-filled.svg";
 import NavLink from "../links/nav-link";
 import theme from "../../themes/theme";
-import RatingStars from "../rating-stars";
+import { Rating } from "@mui/material";
 import FinalPrice from "../price/final-price";
 import ButtonWithIcon from "../buttons/button-with-Icon";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import FullPriceDetails from "../price/full-price-details";
 
-const ProductCard = ({ data, isInFavourites = false, favouritesAction }) => {
+const ProductCard = ({
+  data,
+  isInFavourites = false,
+  favouritesAction,
+  path = "./product",
+  onSale = false,
+}) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   // The price could be on sale or not, also a rating can be added to the card
@@ -24,7 +31,7 @@ const ProductCard = ({ data, isInFavourites = false, favouritesAction }) => {
       }}
     >
       <NavLink
-        path="./product"
+        path={path}
         style={{ width: "100%" }}
         component={
           <Box
@@ -35,7 +42,6 @@ const ProductCard = ({ data, isInFavourites = false, favouritesAction }) => {
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundSize: "cover",
-
               [theme.breakpoints.down("sm")]: {
                 height: "138px",
               },
@@ -61,7 +67,6 @@ const ProductCard = ({ data, isInFavourites = false, favouritesAction }) => {
         >
           <Typography variant="body2">{data?.name}</Typography>
 
-          {data.rating ? <RatingStars rating={data?.rating} /> : null}
           <Typography
             sx={{
               [theme.breakpoints.down("sm")]: {
@@ -72,29 +77,58 @@ const ProductCard = ({ data, isInFavourites = false, favouritesAction }) => {
           >
             {data?.category}
           </Typography>
-          <Box>
-            <FinalPrice
-              fontWeight={isMobile ? "600" : "500"}
-              fontSize={isMobile ? "0.9rem" : "1rem"}
-              price={data.price}
+
+          {data.rating ? (
+            <Rating
+              name="half-rating-read"
+              value={data.rating}
+              precision={0.5}
+              readOnly
             />
-          </Box>
+          ) : null}
+
+          {!onSale ? (
+            <Box>
+              <FinalPrice
+                fontWeight={isMobile ? "600" : "500"}
+                fontSize={isMobile ? "0.9rem" : "1rem"}
+                price={data.price}
+              />
+            </Box>
+          ) : (
+            <FullPriceDetails
+              fontSize={
+                isMobile
+                  ? {
+                      priceFont: "0.9rem",
+                      discountFont: "0.63rem",
+                      percentageFont: "0.63rem",
+                    }
+                  : {
+                      priceFont: "1rem",
+                      discountFont: "0.9rem",
+                      percentageFont: "1rem",
+                    }
+              }
+              price={data.price}
+              discount={50}
+            />
+          )}
         </Stack>
 
-        <Box sx={{ margin: "-4px -7px 0 0" }}>
-          <ButtonWithIcon
-            onClick={() => {
-              favouritesAction?.();
-            }}
-            icon={
-              isInFavourites ? (
-                <img src={heartIconFilled} alt="heart icon" />
-              ) : (
-                <img src={heartIcon} alt="heart icon" />
-              )
-            }
-          />
-        </Box>
+        <ButtonWithIcon
+          padding="0px"
+          onClick={() => {
+            favouritesAction?.();
+          }}
+          icon={
+            isInFavourites ? (
+              <img src={heartIconFilled} alt="heart icon" />
+            ) : (
+              <img src={heartIcon} alt="heart icon" />
+            )
+          }
+        />
       </Stack>
     </Stack>
   );
