@@ -4,13 +4,15 @@ import {
   Pagination,
   Stack,
   PaginationItem,
-  Button,
+  Typography
 } from "@mui/material";
 import GridWithPagination from "./grid-with-pagination";
 import BasicAccordion from "./basic-accordion";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../../themes/theme";
 import { useState } from "react";
+import PlainSlide from "../../components/plain-slide";
+import categoryHero from "../../assets/images/herosection.png"
 
 const PaginationNextButton = () => {
   return <div>Next</div>;
@@ -47,7 +49,39 @@ const Category = () => {
         flexDirection: "row",
         paddingBottom: "70px",
       }}
-    >
+    > 
+    <PlainSlide
+        image={categoryHero}
+        heightPic={{ xs: "140px", sm: "200px", md: "300px", lg: "450px" }}
+      >
+        <Box
+            spacing={2}
+            sx={{
+              position: "absolute",
+              top: "50%",
+              right: "6%",
+              transform: "translateY(-50%)",
+            }}
+          >
+            <Typography
+              sx={{ color: "#13101E" }}
+              fontSize={{ xs: "20px",sm:"35px", md: "50px", lg: "72px" }}
+              fontWeight="700"
+              lineHeight={{sm:"50px",lg:"87.14px"}}
+            >
+              UPTO 70% OFF
+            </Typography>
+            
+              <Typography
+                sx={{ color: "#13101E" }}
+                fontSize={{ xs: "20px",sm:"35px", md: "50px", lg: "72px" }}
+                fontWeight="400"
+                lineHeight={{sm:"50px",lg:"87.14px"}}
+                >
+                BLACK FRIDAY
+              </Typography>
+          </Box>
+      </PlainSlide>
       <Box display={isMobile ? "none" : "flex"} flex={"1 90px"}>
         <BasicAccordion />
       </Box>
@@ -70,7 +104,6 @@ const Category = () => {
           onChange={handlePaginationChange}
           hidePrevButton
           renderItem={(item) => {
-            console.log(item);
             return (
               <PaginationItem
                 sx={{

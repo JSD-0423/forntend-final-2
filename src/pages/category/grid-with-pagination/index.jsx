@@ -1,5 +1,5 @@
 import ProductCard from "../../../components/product-card";
-import { Container, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import theme from "../../../themes/theme";
 
 const GridWithPagination = ({ data, pageNum, numberOfCardsPerPage }) => {
@@ -24,7 +24,9 @@ const GridWithPagination = ({ data, pageNum, numberOfCardsPerPage }) => {
         ) {
           return <ProductCard onSale key={index} data={cardData} />;
         }
+        return null
       })}
+      
     </Stack>
   );
 };
