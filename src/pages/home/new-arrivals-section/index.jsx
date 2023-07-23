@@ -12,7 +12,7 @@ const NewArrivalsSection = () => {
     image: "images/purse.png",
     name: "Grande",
     category: "Blossom Pouch",
-    price: "$39.49",
+    price: 39.9,
   };
 
   return (
@@ -70,10 +70,7 @@ const NewArrivalsSection = () => {
                 },
               }}
             >
-              <ProductCard
-                data={data}
-                price={<FinalPrice price={data.price} />}
-              />
+              <ProductCard data={data} />
             </Box>
           );
         })}
