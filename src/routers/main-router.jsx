@@ -6,7 +6,7 @@ import Product from "../pages/product";
 
 const LayOut = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/frontend-final-2">
       <Routes>
         <Route element={<SharedLayout />}>
           <Route path="/" element={<Home />} />
