@@ -9,6 +9,7 @@ import {
   ListItemText,
   ListItemIcon,
   Divider,
+  Container,
 } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
 import DefaultInput from "../inputs/default-input";
@@ -80,15 +81,14 @@ const Header = () => {
   );
 
   return (
-    <Stack
+    <Container
       sx={{
         paddingTop: "30px",
         paddingBottom: "30px",
+        justifyContent: "space-between",
+        alignItems: "center",
+        display: "flex",
       }}
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
-      component={"section"}
     >
       <Stack
         direction={"row"}
@@ -161,7 +161,7 @@ const Header = () => {
       >
         {drawer}
       </Drawer>
-    </Stack>
+    </Container>
   );
 };
 
