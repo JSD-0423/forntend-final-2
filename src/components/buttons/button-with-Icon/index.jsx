@@ -1,5 +1,4 @@
-import { IconButton, Stack } from "@mui/material";
-import StyledButton from "../styles";
+import { IconButton, Button } from "@mui/material";
 
 const ButtonWithIcon = ({
   icon = "",
@@ -7,11 +6,14 @@ const ButtonWithIcon = ({
   type = "text",
   isIconStart = true,
   action,
+  padding = "10px",
+  fullWidth = false,
 }) => {
   // type can be text, outlined, or contained
   if (!text)
     return (
       <IconButton
+        sx={{ padding: padding }}
         onClick={() => {
           action?.();
         }}
@@ -21,21 +23,29 @@ const ButtonWithIcon = ({
     );
   else
     return isIconStart ? (
-      <StyledButton
-        //   onClick={() => {action();}}
+      <Button
+        fullWidth={fullWidth}
+        sx={{ padding: padding }}
+        onClick={() => {
+          action?.();
+        }}
         variant={type}
         startIcon={icon}
       >
         {text}
-      </StyledButton>
+      </Button>
     ) : (
-      <StyledButton
-        //   onClick={() => {action();}}
+      <Button
+        fullWidth={fullWidth}
+        sx={{ padding: padding }}
+        onClick={() => {
+          action?.();
+        }}
         variant={type}
         endIcon={icon}
       >
         {text}
-      </StyledButton>
+      </Button>
     );
 };
 

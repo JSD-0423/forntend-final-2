@@ -1,11 +1,11 @@
-import StyledButton from "../styles";
-import PlainInput from "../../inputs/plain-input";
+import { Button } from "@mui/material";
 
-const PlainButton = ({ type = "text", text, action }) => {
+const PlainButton = ({ type = "text", text, action, padding }) => {
   // type can be text, outlined, or contained
 
   return (
-    <StyledButton
+    <Button
+      sx={{ padding: padding }}
       onClick={() => {
         action?.();
       }}
@@ -13,7 +13,7 @@ const PlainButton = ({ type = "text", text, action }) => {
       color="primary"
     >
       {text}
-    </StyledButton>
+    </Button>
   );
 };
 

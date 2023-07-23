@@ -144,9 +144,11 @@ const Header = () => {
         <Stack gap={2} direction={"row"} justifyContent={"space-between"}>
           {[heartIcon, userIcon, bagIcon].map((icon, index) => {
             return !isMobile ? (
-              <IconButton key={index} sx={{ padding: "0px" }}>
-                <img alt="icon" src={icon} />
-              </IconButton>
+              <ButtonWithIcon
+                icon={<img alt="icon" src={icon} />}
+                key={index}
+                padding="0px"
+              />
             ) : null;
           })}
         </Stack>

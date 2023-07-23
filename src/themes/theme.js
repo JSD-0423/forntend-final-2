@@ -57,6 +57,38 @@ const theme = createTheme({
         }),
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          borderRadius: "7px",
+          fontSize: "0.9rem",
+          padding: "10px",
+        },
+      },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          borderRadius: "7px",
+          fontSize: "0.9rem",
+          padding: "10px",
+          minHeight: "auto",
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          borderRadius: "7px",
+          fontSize: "0.9rem",
+          padding: "10px",
+          minHeight: "auto",
+        },
+      },
+    },
   },
 });
 

@@ -4,14 +4,13 @@ import heartIconFilled from "../../assets/icons/heart-black-filled.svg";
 import NavLink from "../links/nav-link";
 import theme from "../../themes/theme";
 import RatingStars from "../rating-stars";
+import FinalPrice from "../price/final-price";
 import ButtonWithIcon from "../buttons/button-with-Icon";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-const ProductCard = ({
-  data,
-  isInFavourites = false,
-  price,
-  favouritesAction,
-}) => {
+const ProductCard = ({ data, isInFavourites = false, favouritesAction }) => {
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   // The price could be on sale or not, also a rating can be added to the card
   return (
     <Stack
@@ -25,6 +24,7 @@ const ProductCard = ({
       }}
     >
       <NavLink
+        path="./product"
         style={{ width: "100%" }}
         component={
           <Box
@@ -72,7 +72,13 @@ const ProductCard = ({
           >
             {data?.category}
           </Typography>
-          <Box>{price}</Box>
+          <Box>
+            <FinalPrice
+              fontWeight={isMobile ? "600" : "500"}
+              fontSize={isMobile ? "0.9rem" : "1rem"}
+              price={data.price}
+            />
+          </Box>
         </Stack>
 
         <Box sx={{ margin: "-4px -7px 0 0" }}>
