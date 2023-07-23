@@ -13,5 +13,4 @@ const FullPriceDetails = ({fontSize,price,discount}) => {
     </Stack>
   )
 }
-
 export default FullPriceDetails

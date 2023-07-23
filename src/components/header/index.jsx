@@ -2,13 +2,13 @@ import {
   Box,
   Stack,
   Typography,
-  IconButton,
   List,
   ListItem,
   ListItemButton,
   ListItemText,
   ListItemIcon,
   Divider,
+  Container,
 } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
 import DefaultInput from "../inputs/default-input";
@@ -80,15 +80,14 @@ const Header = () => {
   );
 
   return (
-    <Stack
+    <Container
       sx={{
         paddingTop: "30px",
         paddingBottom: "30px",
+        justifyContent: "space-between",
+        alignItems: "center",
+        display: "flex",
       }}
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
-      component={"section"}
     >
       <Stack
         direction={"row"}
@@ -144,9 +143,11 @@ const Header = () => {
         <Stack gap={2} direction={"row"} justifyContent={"space-between"}>
           {[heartIcon, userIcon, bagIcon].map((icon, index) => {
             return !isMobile ? (
-              <IconButton key={index} sx={{ padding: "0px" }}>
-                <img alt="icon" src={icon} />
-              </IconButton>
+              <ButtonWithIcon
+                icon={<img alt="icon" src={icon} />}
+                key={index}
+                padding="0px"
+              />
             ) : null;
           })}
         </Stack>
@@ -161,7 +162,7 @@ const Header = () => {
       >
         {drawer}
       </Drawer>
-    </Stack>
+    </Container>
   );
 };
 

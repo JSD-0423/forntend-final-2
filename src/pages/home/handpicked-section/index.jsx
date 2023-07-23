@@ -1,22 +1,22 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Container } from "@mui/material";
 import ProductWithTitle from "../../../components/product-with-title";
 import theme from "../../../themes/theme";
 import NavLink from "../../../components/links/nav-link";
 
 const HandPickedSection = () => {
   return (
-    <Stack
+    <Container
       sx={{
         paddingBottom: "42px",
         paddingTop: "32px",
         gap: 3,
+        display: "flex",
+        flexDirection: "column",
         [theme.breakpoints.down("sm")]: {
           gap: 1,
         },
         backgroundColor: theme.palette.primary.main,
       }}
-      component={"section"}
-      direction={"column"}
     >
       <Typography color="bright.main" variant="h2">
         Handpicked Collections
@@ -25,15 +25,15 @@ const HandPickedSection = () => {
         sx={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit,minmax(156px,1fr))",
-          rowGap: "24px",
+          rowGap: "40px",
           columnGap: "40px",
           justifyContent: "space-between",
           [theme.breakpoints.down("sm")]: {
             rowGap: "16px",
+            columnGap: "16px",
           },
-          [theme.breakpoints.down("384px")]: {
-            gridTemplateColumns: "repeat(auto-fit,minmax(100px,100px))",
-            justifyContent: "center",
+          [theme.breakpoints.down("400")]: {
+            gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))",
           },
         }}
       >
@@ -51,7 +51,7 @@ const HandPickedSection = () => {
           );
         })}
       </Stack>
-    </Stack>
+    </Container>
   );
 };
 

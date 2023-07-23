@@ -37,19 +37,56 @@ const theme = createTheme({
     fontFamily: ["Inter", "sans-serif"].join(","),
   },
   components: {
-    MuiStack: {
+    MuiContainer: {
       styleOverrides: {
-        root: (owner) => ({
+        root: ({ ownerState, theme }) => ({
           // Centralized control over website padding:
-          ...(owner.as === "section" && {
+          paddingLeft: "16px",
+          paddingRight: "16px",
+          [theme.breakpoints.up("sm")]: {
             paddingLeft: "20px",
             paddingRight: "20px",
-            [theme.breakpoints.down("sm")]: {
-              paddingLeft: "16px",
-              paddingRight: "16px",
-            },
-          }),
+          },
+          [theme.breakpoints.up("lg")]: {
+            maxWidth: "100%",
+          },
+          [theme.breakpoints.up("xl")]: {
+            paddingLeft: "34px",
+            paddingRight: "34px",
+          },
         }),
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          borderRadius: "7px",
+          fontSize: "0.9rem",
+          padding: "10px",
+        },
+      },
+    },
+    MuiButtonBase: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          borderRadius: "7px",
+          fontSize: "0.9rem",
+          padding: "10px",
+          minHeight: "auto",
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          borderRadius: "7px",
+          fontSize: "0.9rem",
+          padding: "10px",
+          minHeight: "auto",
+        },
       },
     },
   },

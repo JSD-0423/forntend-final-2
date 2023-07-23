@@ -1,4 +1,3 @@
-import FinalPrice from "../../../components/price/final-price";
 import ProductCard from "../../../components/product-card";
 import { Box, Container, Typography, Stack } from "@mui/material";
 import HorizontalScrollSection from "../../../components/horizontal-scroll-section";
@@ -12,22 +11,21 @@ const NewArrivalsSection = () => {
     image: "images/purse.png",
     name: "Grande",
     category: "Blossom Pouch",
-    price: 39.49,
+    price: 39.9,
   };
 
   return (
-    <Stack
+    <Container
       sx={{
-        paddingLeft: "20px",
-        paddingRight: "20px",
         paddingBottom: "32px",
         gap: 3,
+        display: "flex",
+        flexDirection: "column",
         [theme.breakpoints.down("sm")]: {
           gap: 1,
         },
       }}
       component={"section"}
-      direction={"column"}
     >
       <Stack
         justifyContent={"space-between"}
@@ -70,15 +68,12 @@ const NewArrivalsSection = () => {
                 },
               }}
             >
-              <ProductCard
-                data={data}
-                price={<FinalPrice price={data.price} />}
-              />
+              <ProductCard data={data} />
             </Box>
           );
         })}
       </HorizontalScrollSection>
-    </Stack>
+    </Container>
   );
 };
 

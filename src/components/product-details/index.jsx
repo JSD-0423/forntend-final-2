@@ -95,6 +95,7 @@ const ProductDetails = () => {
                   Add to Cart
                 </Typography>
               }
+              fullWidth={true}
               type="contained"
             />
           </Grid>
@@ -108,6 +109,7 @@ const ProductDetails = () => {
                 </Typography>
               }
               type="outlined"
+              fullWidth={true}
             />
           </Grid>
         </Grid>
