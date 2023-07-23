@@ -97,27 +97,38 @@ const ProductCard = ({
             </Box>
           ) : (
             <FullPriceDetails
-              fontSize={"1rem"}
+              fontSize={
+                isMobile
+                  ? {
+                      priceFont: "0.9rem",
+                      discountFont: "0.63rem",
+                      percentageFont: "0.63rem",
+                    }
+                  : {
+                      priceFont: "1rem",
+                      discountFont: "0.9rem",
+                      percentageFont: "1rem",
+                    }
+              }
               price={data.price}
-              discount={"50"}
+              discount={50}
             />
           )}
         </Stack>
 
-        <Box sx={{ margin: "-4px -7px 0 0" }}>
-          <ButtonWithIcon
-            onClick={() => {
-              favouritesAction?.();
-            }}
-            icon={
-              isInFavourites ? (
-                <img src={heartIconFilled} alt="heart icon" />
-              ) : (
-                <img src={heartIcon} alt="heart icon" />
-              )
-            }
-          />
-        </Box>
+        <ButtonWithIcon
+          padding="0px"
+          onClick={() => {
+            favouritesAction?.();
+          }}
+          icon={
+            isInFavourites ? (
+              <img src={heartIconFilled} alt="heart icon" />
+            ) : (
+              <img src={heartIcon} alt="heart icon" />
+            )
+          }
+        />
       </Stack>
     </Stack>
   );
