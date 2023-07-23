@@ -2,7 +2,6 @@ import {
   Box,
   Stack,
   Typography,
-  IconButton,
   List,
   ListItem,
   ListItemButton,

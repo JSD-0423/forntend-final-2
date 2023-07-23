@@ -1,6 +1,4 @@
 import { Typography } from "@mui/material";
-import theme from "../../../themes/theme";
-
 const FinalPrice = ({
   fontSize = "1rem",
   fontWeight = "700",

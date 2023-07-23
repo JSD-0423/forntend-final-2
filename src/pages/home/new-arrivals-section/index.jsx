@@ -1,4 +1,3 @@
-import FinalPrice from "../../../components/price/final-price";
 import ProductCard from "../../../components/product-card";
 import { Box, Container, Typography, Stack } from "@mui/material";
 import HorizontalScrollSection from "../../../components/horizontal-scroll-section";

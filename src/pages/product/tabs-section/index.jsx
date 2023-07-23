@@ -1,7 +1,7 @@
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
-import { Box, Container } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
 import { StyeldTabButton } from "../../../components/buttons/styles";
 
@@ -25,7 +25,7 @@ const TabsSection = () => {
   };
 
   return (
-    <Container maxWidth={"100%"}>
+    <>
       <Box>
         <Tabs
           sx={{
@@ -102,7 +102,7 @@ const TabsSection = () => {
         Justo, sed nunc, pretium turpis scelerisque. Enim urna etiam morbi
         vestibulum ac dictumst. Ac ut elementum molestie sit felis imperdiet.
       </TabPanel>
-    </Container>
+      </>
   );
 };
 
