@@ -12,7 +12,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../../themes/theme";
 import { useState } from "react";
 import PlainSlide from "../../components/plain-slide";
-import categoryHero from "../../assets/images/herosection.png"
+import categoryHero from "../../assets/images/category-hero.png"
 
 const PaginationNextButton = () => {
   return <div>Next</div>;
@@ -46,11 +46,12 @@ const Category = () => {
       sx={{
         display: "flex",
         gap: 4,
-        flexDirection: "row",
+        flexDirection: "column",
         paddingBottom: "70px",
       }}
     > 
-    <PlainSlide
+      <Stack>
+      <PlainSlide
         image={categoryHero}
         heightPic={{ xs: "140px", sm: "200px", md: "300px", lg: "450px" }}
       >
@@ -82,6 +83,8 @@ const Category = () => {
               </Typography>
           </Box>
       </PlainSlide>
+      </Stack>
+      <Stack direction={"row"} gap={4}>
       <Box display={isMobile ? "none" : "flex"} flex={"1 90px"}>
         <BasicAccordion />
       </Box>
@@ -122,6 +125,8 @@ const Category = () => {
           }}
         />
       </Stack>
+      </Stack>
+      
     </Container>
   );
 };
