@@ -13,6 +13,8 @@ import theme from "../../themes/theme";
 import { useState } from "react";
 import PlainSlide from "../../components/plain-slide";
 import categoryHero from "../../assets/images/category-hero.png"
+import useAxios from "../../utils/use-axios";
+import { useLocation } from "react-router-dom";
 
 const PaginationNextButton = () => {
   return <div>Next</div>;
@@ -22,24 +24,15 @@ const Category = () => {
   const [page, setPage] = useState(1);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const data = [];
-
-  for (let i = 0; i < 48; i++) {
-    data.push({
-      image: "images/purse.png",
-      name: "Grande",
-      category: "Blossom Pouch",
-      price: 39.9,
-      rating: 4.5,
-    });
-  }
-
   const handlePaginationChange = (e, pageNum) => {
     setPage(pageNum);
   };
 
   const numberOfCardsPerPage = 20;
+  const {search} =useLocation()
+  const searchFiltered = search.replace('?', '');
 
+  const dataFiltered=useAxios(`https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&${searchFiltered}`)
   return (
     <Container
       maxWidth="100%"
@@ -93,7 +86,7 @@ const Category = () => {
         <GridWithPagination
           pageNum={page}
           numberOfCardsPerPage={numberOfCardsPerPage}
-          data={data}
+          data={dataFiltered[0]?.products}
         />
 
         <Pagination
@@ -103,7 +96,7 @@ const Category = () => {
             borderRadius: "12px",
             padding: "4px 7px 4px 7px",
           }}
-          count={Math.ceil(data.length / numberOfCardsPerPage)}
+          count={Math.ceil(dataFiltered[0]?.length / numberOfCardsPerPage)}
           onChange={handlePaginationChange}
           hidePrevButton
           renderItem={(item) => {

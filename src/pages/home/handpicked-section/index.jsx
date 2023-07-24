@@ -2,8 +2,12 @@ import { Stack, Typography, Container } from "@mui/material";
 import ProductWithTitle from "../../../components/product-with-title";
 import theme from "../../../themes/theme";
 import NavLink from "../../../components/links/nav-link";
+import useAxios from "../../../utils/use-axios";
 
 const HandPickedSection = () => {
+  const [data] = useAxios(
+    "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&type=handpicked"
+  );
   return (
     <Container
       sx={{
@@ -37,14 +41,15 @@ const HandPickedSection = () => {
           },
         }}
       >
-        {[1, 2, 3, 4].map((value) => {
+        {data?.products?.map((item) => {
           return (
             <NavLink
-              key={value}
+              path={`/product/${item.id}`}
+              key={item.id}
               component={
                 <ProductWithTitle
-                  image="images/laura.png"
-                  title={"Personal Care"}
+                  image={item.productImages[0].image_url}
+                  title={item.title}
                 />
               }
             />

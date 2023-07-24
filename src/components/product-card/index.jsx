@@ -13,7 +13,6 @@ const ProductCard = ({
   data,
   isInFavourites = false,
   favouritesAction,
-  path = "./product",
   onSale = false,
 }) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -31,14 +30,14 @@ const ProductCard = ({
       }}
     >
       <NavLink
-        path={path}
+        path={`/product/${data.id}`}
         style={{ width: "100%" }}
         component={
           <Box
             sx={{
               height: "286px",
               width: "%100",
-              backgroundImage: `url('${data?.image}')`,
+              backgroundImage: `url('${data?.productImages[0].image_url}')`,
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundSize: "cover",
@@ -65,7 +64,7 @@ const ProductCard = ({
             },
           }}
         >
-          <Typography variant="body2">{data?.name}</Typography>
+          <Typography variant="body2">{data?.title}</Typography>
 
           <Typography
             sx={{
@@ -75,13 +74,13 @@ const ProductCard = ({
             }}
             color={"grey"}
           >
-            {data?.category}
+            {data?.category.title}
           </Typography>
 
           {data.rating ? (
             <Rating
               name="half-rating-read"
-              value={data.rating}
+              value={data.rate}
               precision={0.5}
               readOnly
             />
@@ -110,8 +109,8 @@ const ProductCard = ({
                       percentageFont: "1rem",
                     }
               }
-              price={data.price}
-              discount={50}
+              price={data?.price}
+              discount={data?.discount}
             />
           )}
         </Stack>

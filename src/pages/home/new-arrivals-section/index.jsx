@@ -5,14 +5,11 @@ import theme from "../../../themes/theme";
 import ButtonWithIcon from "../../../components/buttons/button-with-Icon";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import NavLink from "../../../components/links/nav-link";
+import useAxios from "../../../utils/use-axios";
 
 const NewArrivalsSection = () => {
-  const data = {
-    image: "images/purse.png",
-    name: "Grande",
-    category: "Blossom Pouch",
-    price: 39.9,
-  };
+
+  const [data]=useAxios("https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&type=new-arrivals")
 
   return (
     <Container
@@ -56,10 +53,10 @@ const NewArrivalsSection = () => {
         justifyContent="space-between"
         overflow={"scroll"}
       >
-        {[1, 2, 3, 4].map((value) => {
+        {data?.products?.map((CardData,index) => {
           return (
             <Box
-              key={value}
+              key={index}
               sx={{
                 minWidth: "286px",
                 flexGrow: "1",
@@ -68,7 +65,7 @@ const NewArrivalsSection = () => {
                 },
               }}
             >
-              <ProductCard data={data} />
+              <ProductCard data={CardData} />
             </Box>
           );
         })}

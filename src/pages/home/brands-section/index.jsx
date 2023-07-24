@@ -2,8 +2,10 @@ import { Stack, Typography, Container } from "@mui/material";
 import BrandItem from "../../../components/brand-item";
 import theme from "../../../themes/theme";
 import NavLink from "../../../components/links/nav-link";
+import useAxios from "../../../utils/use-axios";
 
 const BrandsSection = () => {
+  const [data]=useAxios("https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/brands")
   return (
     <Container
       sx={{
@@ -34,12 +36,12 @@ const BrandsSection = () => {
           },
         }}
       >
-        {[1, 2, 3, 4, 5, 6].map((value) => {
+        {data?.brands?.map((item) => {
           return (
             <NavLink
-              path="./category"
-              key={value}
-              component={<BrandItem image="images/brand.png" />}
+              path={`/category?brand=${item.id}`}
+              key={item.id}
+              component={<BrandItem image={item.image_url} />}
             />
           );
         })}

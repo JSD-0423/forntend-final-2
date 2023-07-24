@@ -13,8 +13,9 @@ import FullPriceDetails from "../price/full-price-details";
 import ButtonWithIcon from "../buttons/button-with-Icon";
 import cartIcon from "../../assets/icons/bag-white.svg";
 import favIcon from "../../assets/icons/wishlist-blue.svg";
+import FinalPrice from "../price/final-price";
 
-const ProductDetails = () => {
+const ProductDetails = ({ productData }) => {
   const [counter, setCounter] = useState(1);
 
   const increaseCounter = () => {
@@ -30,28 +31,32 @@ const ProductDetails = () => {
       <Grid container direction={"column"} gap={3}>
         <Box>
           <Typography variant="h3" sx={{ fontSize: "34px" }} fontWeight="600">
-            Coach
+            {productData?.title}
           </Typography>
-          <Typography fontSize={"20px"}>
-            Leather Coach Bag with adjustable starps.
-          </Typography>
+          <Typography fontSize={"20px"}>{productData?.description}</Typography>
         </Box>
-        <Rating
-          name="half-rating-read"
-          defaultValue={2.4}
-          precision={0.5}
+        {
+          productData?.rate ? <Rating
+          name="text-feedback"
+          value={productData?.rate}
           readOnly
+          precision={0.5}
           sx={{ color: "#FF8C4B" }}
-        />{" "}
-        <FullPriceDetails
-          fontSize={{
-            priceFont: "40px",
-            discountFont: "36px",
-            percentageFont: "20px",
-          }}
-          price={50}
-          discount={0.5}
-        />
+        />:null
+        }
+        {productData?.discount ? (
+          <FullPriceDetails
+            fontSize={{
+              priceFont: "40px",
+              discountFont: "36px",
+              percentageFont: "20px",
+            }}
+            price={productData?.price}
+            discount={productData?.discount}
+          />
+        ) : (
+          <FinalPrice price={productData?.price} fontSize="40px" />
+        )}
         <Divider />
         <Stack direction={"row"} gap={2} alignItems="center">
           <Typography color="#13101E" fontWeight={"600"}>

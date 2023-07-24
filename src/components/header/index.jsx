@@ -22,6 +22,7 @@ import ButtonWithIcon from "../buttons/button-with-Icon";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import { useState } from "react";
+import useAxios from "../../utils/use-axios";
 
 const Header = () => {
   const isLaptop = useMediaQuery((theme) => theme.breakpoints.down("lg"));
@@ -30,14 +31,9 @@ const Header = () => {
 
   const [isMobileOpen, setMobileOpen] = useState(false);
 
-  const categories = [
-    "Handbags",
-    "Watches",
-    "Skincare",
-    "Jewellery",
-    "Apperels",
-  ];
-
+  const [categories] = useAxios(
+    "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
+  );
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -48,13 +44,21 @@ const Header = () => {
         <ListItemText primary={"Categories"} />
       </ListItem>
       <Divider />
-      {categories.map((text) => (
-        <ListItem key={text} disablePadding>
-          <ListItemButton>
-            <ListItemText primary={text} />
-          </ListItemButton>
-        </ListItem>
-      ))}
+      {categories?.categories?.map((text, index) => {
+        if (index <= 4) {
+          return (
+            <ListItem key={text.id} disablePadding>
+              <ListItemButton>
+                <NavLink
+                  path={`/category?category=${text.id}`}
+                  component={<ListItemText primary={text.title} />}
+                />
+              </ListItemButton>
+            </ListItem>
+          );
+        }
+        return null;
+      })}
       <Divider />
       {[heartIcon, userIcon, bagIcon].map((icon, index) => {
         return isMobile ? (
@@ -100,7 +104,7 @@ const Header = () => {
             display: isLaptop ? "none" : "block",
           }}
         >
-          <img alt="logo" src={Logo} />
+          <NavLink path="/" component={<img alt="logo" src={Logo} />} />
         </Box>
         {isTablet ? (
           <ButtonWithIcon action={handleDrawerToggle} icon={<MenuIcon />} />
@@ -111,13 +115,19 @@ const Header = () => {
             justifyContent="space-between"
             gap={3}
           >
-            {categories.map((text, index) => {
-              return (
-                <NavLink
-                  component={<Typography variant="h1">{text}</Typography>}
-                  key={index}
-                />
-              );
+            {categories?.categories?.map((text, index) => {
+              if (index <= 4) {
+                return (
+                  <NavLink
+                    path={`/category?category=${text.id}`}
+                    component={
+                      <Typography variant="h1">{text.title}</Typography>
+                    }
+                    key={text.id}
+                  />
+                );
+              }
+              return null;
             })}
           </Stack>
         )}

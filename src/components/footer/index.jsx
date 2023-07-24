@@ -5,7 +5,12 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import useAxios from "../../utils/use-axios";
+import NavLink from "../links/nav-link";
 const Footer = () => {
+  const [categories] = useAxios(
+    "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
+  );
   return (
     <Container sx={{ bgcolor: "primary.main" }} maxWidth="100%">
       <Stack
@@ -22,13 +27,12 @@ const Footer = () => {
             <Typography sx={{ color: "bright.main" }}>
               Shop by Category
             </Typography>
-            <Link sx={{ color: "lightText.main" }}>Skincare</Link>
-            <Link sx={{ color: "lightText.main" }}>Personal Care</Link>
-            <Link sx={{ color: "lightText.main" }}>Handbags</Link>
-            <Link sx={{ color: "lightText.main" }}>Apparels</Link>
-            <Link sx={{ color: "lightText.main" }}>Watches</Link>
-            <Link sx={{ color: "lightText.main" }}>Eye Wear</Link>
-            <Link sx={{ color: "lightText.main" }}>Jewellers</Link>
+            {
+              categories?.categories?.map((item)=>{
+                return <NavLink                   path={`/category?category=${item.id}`}
+                component={<Link sx={{ color: "lightText.main" }}>{item.title}</Link>}/>
+              })
+            }
           </Stack>
           <Stack spacing={1}>
             <Typography sx={{ color: "bright.main" }}>

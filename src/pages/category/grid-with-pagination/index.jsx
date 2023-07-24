@@ -17,7 +17,7 @@ const GridWithPagination = ({ data, pageNum, numberOfCardsPerPage }) => {
         },
       }}
     >
-      {data.map((cardData, index) => {
+      {data?.map((cardData, index) => {
         if (
           numberOfCardsPerPage * (pageNum - 1) <= index &&
           index < numberOfCardsPerPage * pageNum
