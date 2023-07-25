@@ -24,7 +24,6 @@ const TabsSection = ({productData}) => {
   const [currentTabValue, setCurrentTabValue] = useState("1");
   const [relatedProducts]=useAxios(`https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&category=${productData?.category_id}`)
 
-  console.log(relatedProducts)
   const handleTabChange = (e, newValue) => {
     setCurrentTabValue(newValue);
   };

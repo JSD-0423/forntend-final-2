@@ -21,6 +21,7 @@ const HandPickedSection = () => {
         },
         backgroundColor: theme.palette.primary.main,
       }}
+      id="handPicked"
     >
       <Typography color="bright.main" variant="h2">
         Handpicked Collections

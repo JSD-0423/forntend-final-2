@@ -30,6 +30,7 @@ const Header = () => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const [isMobileOpen, setMobileOpen] = useState(false);
+  const [search,setSearch]=useState("")
 
   const [categories] = useAxios(
     "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"

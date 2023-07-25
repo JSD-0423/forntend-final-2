@@ -32,7 +32,7 @@ const Category = () => {
   const {search} =useLocation()
   const searchFiltered = search.replace('?', '');
 
-  const dataFiltered=useAxios(`https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&${searchFiltered}`)
+  const [dataFiltered,loading,error]=useAxios(`https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&${searchFiltered}`)
   return (
     <Container
       maxWidth="100%"
@@ -84,9 +84,11 @@ const Category = () => {
 
       <Stack flex={"5"} direction={"column"} gap={3}>
         <GridWithPagination
+          loading={loading}
+          error={error}
           pageNum={page}
           numberOfCardsPerPage={numberOfCardsPerPage}
-          data={dataFiltered[0]?.products}
+          data={dataFiltered?.products}
         />
 
         <Pagination

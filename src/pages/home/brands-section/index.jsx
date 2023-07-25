@@ -18,6 +18,7 @@ const BrandsSection = () => {
           gap: 1,
         },
       }}
+      id="brands"
     >
       <Typography variant="h2">Shop by Brands</Typography>
       <Stack

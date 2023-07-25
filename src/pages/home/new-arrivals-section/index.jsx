@@ -35,6 +35,7 @@ const NewArrivalsSection = () => {
       >
         <Typography variant="h2">New Arrivals</Typography>
         <NavLink
+          path={`/category?type=type=new-arrivals`}
           component={
             <ButtonWithIcon
               isIconStart={false}

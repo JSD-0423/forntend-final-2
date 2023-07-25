@@ -7,12 +7,18 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import useAxios from "../../utils/use-axios";
 import NavLink from "../links/nav-link";
+import { HashLink, NavHashLink } from "react-router-hash-link";
 const Footer = () => {
   const [categories] = useAxios(
     "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
   );
   return (
-    <Container sx={{ bgcolor: "primary.main" }} maxWidth="100%">
+    <Container
+      sx={{
+        bgcolor: "primary.main",
+      }}
+      maxWidth="100%"
+    >
       <Stack
         direction={{ xs: "column", sm: "row" }}
         justifyContent="space-between"
@@ -27,20 +33,30 @@ const Footer = () => {
             <Typography sx={{ color: "bright.main" }}>
               Shop by Category
             </Typography>
-            {
-              categories?.categories?.map((item)=>{
-                return <NavLink                   path={`/category?category=${item.id}`}
-                component={<Link sx={{ color: "lightText.main" }}>{item.title}</Link>}/>
-              })
-            }
+            {categories?.categories?.map((item) => {
+              return (
+                <NavLink
+                  path={`/category?category=${item.id}`}
+                  component={
+                    <Link sx={{ color: "lightText.main" }}>{item.title}</Link>
+                  }
+                />
+              );
+            })}
           </Stack>
           <Stack spacing={1}>
             <Typography sx={{ color: "bright.main" }}>
               Shop by products
             </Typography>
-            <Link sx={{ color: "lightText.main" }}>featured </Link>
-            <Link sx={{ color: "lightText.main" }}>trendy </Link>
-            <Link sx={{ color: "lightText.main" }}>brands </Link>
+            <NavHashLink style={{ textDecoration: "none" }} to={"/#handPicked"}>
+              <Typography color="lightText.main">featured</Typography>
+            </NavHashLink>
+            <NavHashLink style={{ textDecoration: "none" }} to={"/#banner"}>
+              <Typography color="lightText.main">trendy</Typography>
+            </NavHashLink>
+            <NavHashLink style={{ textDecoration: "none" }} to={"/#brands"}>
+              <Typography color="lightText.main">brands</Typography>{" "}
+            </NavHashLink>
           </Stack>
         </Stack>
         <Stack spacing={2}>
