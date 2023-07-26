@@ -46,6 +46,7 @@ const Header = () => {
     setSearch(e.target.value)
     if(e.keyCode===13){
       navigate(`/category?q=${search}`, { replace: true });
+      setSearch("")
     }
   }
 

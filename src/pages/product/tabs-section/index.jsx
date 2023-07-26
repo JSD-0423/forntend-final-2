@@ -68,7 +68,7 @@ const TabsSection = ({productData}) => {
         </Tabs>
       </Box>
 
-      <TabPanel value={currentTabValue} index="1">
+      <TabPanel value={currentTabValue} index="1" style={{minHeight: "479px"}}>
         {productData?.description}
       </TabPanel>
       <TabPanel value={currentTabValue} index="2">
@@ -104,7 +104,7 @@ const TabsSection = ({productData}) => {
           }
        </Stack>
       </TabPanel>
-      <TabPanel value={currentTabValue} index="3">
+      <TabPanel value={currentTabValue} index="3" style={{minHeight: "479px"}}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus
         scelerisque laoreet tortor cras molestie tincidunt malesuada malesuada.
         Neque, mauris duis dui id morbi magna. Cras lacus, viverra auctor in
