@@ -12,7 +12,7 @@ const LayOut = () => {
       <Routes>
         <Route element={<SharedLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/product" element={<Product />}></Route>
+          <Route path="/product/:id" element={<Product />}></Route>
           <Route path="/category" element={<Category />}></Route>
           <Route path="/cart" element={<CartPage />}></Route>
         </Route>

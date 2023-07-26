@@ -1,8 +1,31 @@
 import ProductCard from "../../../components/product-card";
-import { Stack } from "@mui/material";
+import { Stack,Typography } from "@mui/material";
 import theme from "../../../themes/theme";
+import Loader from "../../../components/loader";
+import Error from "../../../components/error";
 
-const GridWithPagination = ({ data, pageNum, numberOfCardsPerPage }) => {
+const GridWithPagination = ({
+  loading,
+  error,
+  data,
+  pageNum,
+  numberOfCardsPerPage,
+}) => {
+  if (loading) {
+    return (
+      <Loader/>
+    );
+  }
+  if (error) {
+    return (
+      <Error/>
+    )
+  }
+  if(!data?.length){
+    return <Stack height={"70vh"} justifyContent="center" alignItems={"center"}>
+      <Typography variant="h2" color={"primary.main"}>No Products Found</Typography>
+    </Stack>
+  }
   return (
     <Stack
       sx={{
@@ -17,16 +40,15 @@ const GridWithPagination = ({ data, pageNum, numberOfCardsPerPage }) => {
         },
       }}
     >
-      {data.map((cardData, index) => {
+      {data?.map((cardData, index) => {
         if (
           numberOfCardsPerPage * (pageNum - 1) <= index &&
           index < numberOfCardsPerPage * pageNum
         ) {
-          return <ProductCard onSale key={index} data={cardData} />;
+          return <ProductCard rate={true} onSale={cardData?.discount} key={index} data={cardData} />;
         }
-        return null
+        return null;
       })}
-      
     </Stack>
   );
 };

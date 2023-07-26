@@ -1,14 +1,21 @@
 import { Button, Grid, Stack } from "@mui/material";
 import React from "react";
 import herosection from "../../assets/images/herosection.png";
-import herosection2 from "../../assets/images/herosection2.png";
 import facepacks from "../../assets/images/facepacks.png";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useState } from "react";
-const ProductCarousel = () => {
-  const [showImage, setShowImage] = useState(herosection);
-  const images = [herosection, facepacks, herosection2];
+import { useEffect } from "react";
+const ProductCarousel = ({ productData }) => {
+  const [showImage, setShowImage] = useState();
+  const images = [
+    productData?.productImages[0].image_url,
+    facepacks,
+    herosection,
+  ];
+  useEffect(() => {
+    setShowImage(productData?.productImages[0].image_url);
+  }, [productData]);
   const handleImageShow = (src) => {
     setShowImage(src);
   };
