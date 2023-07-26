@@ -22,9 +22,12 @@ const DefaultInput = ({
       value={text}
       placeholder={placeholder}
       size={size}
-      // onChange={(e) => {
-      //   handler(e);
-      // }}
+      onChange={(e) => {
+        handler(e);
+      }}
+      onKeyUp={(e)=>{
+        handler(e)
+      }}
       InputProps={{
         startAdornment:
           adorment && isAdormentStart ? (

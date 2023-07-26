@@ -5,6 +5,7 @@ const FinalPrice = ({
   price,
   discount = 1,
 }) => {
+  discount= discount?1-( discount/100 ): 1
   return (
     <Typography
       variant="h3"
@@ -12,7 +13,9 @@ const FinalPrice = ({
       fontSize={fontSize}
       fontWeight={fontWeight}
     >
-      ${discount * price}
+      ${
+        price ? (price*discount).toFixed(2) :0
+      }
     </Typography>
   );
 };
