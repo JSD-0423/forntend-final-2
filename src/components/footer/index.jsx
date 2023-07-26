@@ -1,9 +1,5 @@
 import React from "react";
 import { Container, Typography, Link, Divider, Stack } from "@mui/material";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import useAxios from "../../utils/use-axios";
 import NavLink from "../links/nav-link";

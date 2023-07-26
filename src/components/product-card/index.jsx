@@ -11,6 +11,7 @@ import FullPriceDetails from "../price/full-price-details";
 
 const ProductCard = ({
   data,
+  rate = false,
   isInFavourites = false,
   favouritesAction,
   onSale = false,
@@ -74,15 +75,16 @@ const ProductCard = ({
             }}
             color={"grey"}
           >
-            {data?.category.title}
+            {data?.category?.title}
           </Typography>
 
-          {data.rating ? (
+          {rate && data?.rate ? (
             <Rating
               name="half-rating-read"
-              value={data.rate}
+              value={data?.rate}
               precision={0.5}
               readOnly
+              sx={{ color: "#FF8C4B" }}
             />
           ) : null}
 
@@ -91,7 +93,7 @@ const ProductCard = ({
               <FinalPrice
                 fontWeight={isMobile ? "600" : "500"}
                 fontSize={isMobile ? "0.9rem" : "1rem"}
-                price={data.price}
+                price={data?.price}
               />
             </Box>
           ) : (

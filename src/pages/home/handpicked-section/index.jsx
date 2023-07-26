@@ -42,19 +42,22 @@ const HandPickedSection = () => {
           },
         }}
       >
-        {data?.products?.map((item) => {
-          return (
-            <NavLink
-              path={`/product/${item.id}`}
-              key={item.id}
-              component={
-                <ProductWithTitle
-                  image={item.productImages[0].image_url}
-                  title={item.title}
-                />
-              }
-            />
-          );
+        {data?.products?.map((item,index) => {
+          if(index<4){
+            return (
+              <NavLink
+                path={`/product/${item.id}`}
+                key={item.id}
+                component={
+                  <ProductWithTitle
+                    image={item.productImages[0].image_url}
+                    title={item.title}
+                  />
+                }
+              />
+            );
+          }
+          return null
         })}
       </Stack>
     </Container>

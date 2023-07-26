@@ -23,6 +23,8 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import { useState } from "react";
 import useAxios from "../../utils/use-axios";
+import { useNavigate } from 'react-router-dom';
+
 
 const Header = () => {
   const isLaptop = useMediaQuery((theme) => theme.breakpoints.down("lg"));
@@ -31,6 +33,8 @@ const Header = () => {
 
   const [isMobileOpen, setMobileOpen] = useState(false);
   const [search,setSearch]=useState("")
+  const navigate = useNavigate();
+
 
   const [categories] = useAxios(
     "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
@@ -38,6 +42,12 @@ const Header = () => {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+  const handleUserSearch=(e)=>{
+    setSearch(e.target.value)
+    if(e.keyCode===13){
+      navigate(`/category?q=${search}`, { replace: true });
+    }
+  }
 
   const drawer = (
     <List>
@@ -147,6 +157,8 @@ const Header = () => {
             placeholder="Search for products or brands..."
             adorment={<FiSearch size={25} />}
             size={isLaptop ? "0.6rem" : "0.9rem"}
+            text={search}
+            handler={handleUserSearch}
           />
         </Box>
 

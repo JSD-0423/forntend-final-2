@@ -23,7 +23,7 @@ const HeroSection = () => {
         navButtonsAlwaysInvisible={true}
       >
         <NavLink
-          path={`/category?category=19`}
+          path={`/category?category=35`}
           component={
             <PlainSlide
               image={herosection}

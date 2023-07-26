@@ -37,14 +37,17 @@ const BrandsSection = () => {
           },
         }}
       >
-        {data?.brands?.map((item) => {
-          return (
-            <NavLink
-              path={`/category?brand=${item.id}`}
-              key={item.id}
-              component={<BrandItem image={item.image_url} />}
-            />
-          );
+        {data?.brands?.map((item,index) => {
+          if(index<6){
+            return (
+              <NavLink
+                path={`/category?brand=${item.id}`}
+                key={item.id}
+                component={<BrandItem image={item.image_url} />}
+              />
+            );
+          }
+         return null
         })}
       </Stack>
     </Container>
