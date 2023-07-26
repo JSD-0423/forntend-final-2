@@ -13,7 +13,7 @@ const ButtonWithIcon = ({
   if (!text)
     return (
       <IconButton
-        sx={{ padding: padding }}
+        sx={{ padding: padding ,"&:hover":{backgroundColor:"inherit"}}}
         onClick={() => {
           action?.();
         }}

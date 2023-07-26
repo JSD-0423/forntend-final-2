@@ -1,7 +1,8 @@
 import ProductCard from "../../../components/product-card";
-import { Stack, Typography } from "@mui/material";
+import { Stack,Typography } from "@mui/material";
 import theme from "../../../themes/theme";
-import CircularProgress from "@mui/material/CircularProgress";
+import Loader from "../../../components/loader";
+import Error from "../../../components/error";
 
 const GridWithPagination = ({
   loading,
@@ -12,17 +13,18 @@ const GridWithPagination = ({
 }) => {
   if (loading) {
     return (
-      <Stack justifyContent={"center"} alignItems={"center"}>
-        <CircularProgress size={"100px"} />
-      </Stack>
+      <Loader/>
     );
   }
   if (error) {
     return (
-      <Stack justifyContent={"center"} alignItems={"center"}>
-        <Typography>products loading failed</Typography>
-      </Stack>
-    );
+      <Error/>
+    )
+  }
+  if(!data?.length){
+    return <Stack height={"70vh"} justifyContent="center" alignItems={"center"}>
+      <Typography variant="h2" color={"primary.main"}>No Products Found</Typography>
+    </Stack>
   }
   return (
     <Stack
@@ -43,7 +45,7 @@ const GridWithPagination = ({
           numberOfCardsPerPage * (pageNum - 1) <= index &&
           index < numberOfCardsPerPage * pageNum
         ) {
-          return <ProductCard rate={true} onSale key={index} data={cardData} />;
+          return <ProductCard rate={true} onSale={cardData?.discount} key={index} data={cardData} />;
         }
         return null;
       })}
