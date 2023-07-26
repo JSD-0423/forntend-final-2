@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/frontend-final-2/static/css/main.8a685450.css",
-    "main.js": "/frontend-final-2/static/js/main.86cb713f.js",
+    "main.js": "/frontend-final-2/static/js/main.35d8d068.js",
     "static/js/787.2f6b9e6f.chunk.js": "/frontend-final-2/static/js/787.2f6b9e6f.chunk.js",
     "static/media/herosection.png": "/frontend-final-2/static/media/herosection.d91811aed5b7720cba52.png",
     "static/media/skincare.png": "/frontend-final-2/static/media/skincare.111d7d1ad270c4834e0f.png",
@@ -10,24 +10,24 @@
     "static/media/category-hero.png": "/frontend-final-2/static/media/category-hero.650c70cdc19ae941b2b2.png",
     "static/media/herosection2.png": "/frontend-final-2/static/media/herosection2.374725c87979eed07166.png",
     "static/media/logo.svg": "/frontend-final-2/static/media/logo.31982cf68399b39b1a55a6fdc86544e4.svg",
-    "static/media/insta.svg": "/frontend-final-2/static/media/insta.da820822ee3b48a6409b185f02abc324.svg",
+    "static/media/insta.svg": "/frontend-final-2/static/media/insta.095dde4d116f1cea4676c91d8743d01a.svg",
     "static/media/bag.svg": "/frontend-final-2/static/media/bag.cf3d34b21c0f0d9432f2041755df177e.svg",
     "static/media/bag-white.svg": "/frontend-final-2/static/media/bag-white.c6e72ebab59afd7c573ef3087bde51b4.svg",
-    "static/media/twitter.svg": "/frontend-final-2/static/media/twitter.b290c56409176563dc76136e713e56a2.svg",
+    "static/media/twitter.svg": "/frontend-final-2/static/media/twitter.735a0aaad4e852ca7944767369136925.svg",
     "index.html": "/frontend-final-2/index.html",
-    "static/media/fblogo.svg": "/frontend-final-2/static/media/fblogo.b4d00aa08e1a75795eb2791d1fe57e09.svg",
-    "static/media/youtube.svg": "/frontend-final-2/static/media/youtube.a7e2d4d1b4fed49beec70f749e5f1756.svg",
+    "static/media/fblogo.svg": "/frontend-final-2/static/media/fblogo.9b715f52741e4cd8450c7f2b02bc6e72.svg",
+    "static/media/youtube.svg": "/frontend-final-2/static/media/youtube.40e60d351d48a1f3d00eda7f60c92db1.svg",
     "static/media/heart-black-filled.svg": "/frontend-final-2/static/media/heart-black-filled.a4c02489bfc7f2f0cf92c4ac4134d76f.svg",
     "static/media/heart-black.svg": "/frontend-final-2/static/media/heart-black.52f59eac15c085b0723a17a441bddeb2.svg",
     "static/media/heart-primary.svg": "/frontend-final-2/static/media/heart-primary.2965b5a93c64cac9dacf960ed707e262.svg",
     "static/media/wishlist-blue.svg": "/frontend-final-2/static/media/wishlist-blue.2d152b0423ddb203a6e15b738f22735e.svg",
     "static/media/user.svg": "/frontend-final-2/static/media/user.ccfe39f257b42a4af72394fb5f33ce43.svg",
     "main.8a685450.css.map": "/frontend-final-2/static/css/main.8a685450.css.map",
-    "main.86cb713f.js.map": "/frontend-final-2/static/js/main.86cb713f.js.map",
+    "main.35d8d068.js.map": "/frontend-final-2/static/js/main.35d8d068.js.map",
     "787.2f6b9e6f.chunk.js.map": "/frontend-final-2/static/js/787.2f6b9e6f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8a685450.css",
-    "static/js/main.86cb713f.js"
+    "static/js/main.35d8d068.js"
   ]
 }
