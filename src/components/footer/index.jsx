@@ -50,13 +50,13 @@ const Footer = () => {
               Shop by products
             </Typography>
             <NavHashLink style={{ textDecoration: "none" }} to={"/#handPicked"}>
-              <Typography color="lightText.main">featured</Typography>
+              <Typography color="lightText.main">Featured</Typography>
             </NavHashLink>
             <NavHashLink style={{ textDecoration: "none" }} to={"/#banner"}>
-              <Typography color="lightText.main">trendy</Typography>
+              <Typography color="lightText.main">Trendy</Typography>
             </NavHashLink>
             <NavHashLink style={{ textDecoration: "none" }} to={"/#brands"}>
-              <Typography color="lightText.main">brands</Typography>{" "}
+              <Typography color="lightText.main">Brands</Typography>{" "}
             </NavHashLink>
           </Stack>
         </Stack>

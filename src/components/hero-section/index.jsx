@@ -8,10 +8,21 @@ import ButtonWithIcon from "../buttons/button-with-Icon";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import { useMediaQuery } from "@mui/material";
 import NavLink from "../links/nav-link";
+import useAxios from "../../utils/use-axios";
 
 const HeroSection = () => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
+  const [catagories] = useAxios(
+    "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
+  );
+  let handBagsID;
+  catagories?.categories?.map((item) => {
+    if (item?.title === "Handbags") {
+      handBagsID = item?.id;
+    }
+    return null;
+  });
   return (
     <Container
       maxWidth="100%"
@@ -23,7 +34,7 @@ const HeroSection = () => {
         navButtonsAlwaysInvisible={true}
       >
         <NavLink
-          path={`/category?category=35`}
+          path={`/category?category=${handBagsID}`}
           component={
             <PlainSlide
               image={herosection}
