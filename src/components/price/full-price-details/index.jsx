@@ -6,7 +6,7 @@ import PreviousPrice from '../previous-price'
 
 const FullPriceDetails = ({fontSize,price,discount}) => {
   return (
-    <Stack flexDirection={"row"} gap={2} alignItems="center">
+    <Stack flexDirection={"row"} gap={2} alignItems="center" flexWrap={"wrap"}>
         <FinalPrice fontSize={fontSize.priceFont} price={price} discount={discount}/>
         <PreviousPrice fontSize={fontSize.discountFont} previousPrice={price}/>
         <Discount fontSize={fontSize.percentageFont} discount={discount}/>
