@@ -15,7 +15,11 @@ const CartTable = ({ productsData }) => {
         <TableHead>
           <TableRow>
             {["Product Name", "Price", "Qty", "Subtotal"].map((text, index) => (
-              <TableCell key={index} sx={{ color: "grey" }}>
+              <TableCell
+                align={index === 0 ? "left" : "right"}
+                key={index}
+                sx={{ color: "grey", paddingLeft: index === 0 ? 0 : "auto" }}
+              >
                 {text}
               </TableCell>
             ))}
@@ -27,12 +31,12 @@ const CartTable = ({ productsData }) => {
               key={product.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell sx={{ paddingLeft: 0 }} component="th" scope="row">
                 <Stack gap={1} alignItems={"center"} direction={"row"}>
                   <img
                     style={{
-                      width: "100px",
-                      height: "100px",
+                      width: "75px",
+                      height: "80px",
                       borderRadius: "7px",
                     }}
                     src={product.image}
@@ -40,7 +44,7 @@ const CartTable = ({ productsData }) => {
 
                   <Stack
                     justifyContent={"space-between"}
-                    sx={{ height: "100px" }}
+                    sx={{ height: "80px" }}
                     direction={"column"}
                   >
                     <Typography variant="body2">{product.title}</Typography>
@@ -51,9 +55,9 @@ const CartTable = ({ productsData }) => {
                   </Stack>
                 </Stack>
               </TableCell>
-              <TableCell align="left">{`$${product.price}`}</TableCell>
-              <TableCell align="left">{product.quantity}</TableCell>
-              <TableCell align="left">{`$${
+              <TableCell align="right">{`$${product.price}`}</TableCell>
+              <TableCell align="right">{product.quantity}</TableCell>
+              <TableCell align="right">{`$${
                 product.price * product.quantity
               }`}</TableCell>
             </TableRow>

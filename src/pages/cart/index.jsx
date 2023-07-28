@@ -9,7 +9,7 @@ const CartPage = () => {
       sx={{
         display: "flex",
         flexDirection: "row",
-        gap: 8,
+        gap: "134px",
         paddingBottom: "60px",
         [theme.breakpoints.down("800")]: {
           flexDirection: "column",
@@ -44,7 +44,7 @@ const CartPage = () => {
       <Box
         sx={{
           marginTop: "100px",
-          width: "300px",
+          width: "411px",
           [theme.breakpoints.down("800")]: {
             width: "100%",
             marginTop: "20px",
