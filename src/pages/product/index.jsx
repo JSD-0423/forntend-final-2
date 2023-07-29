@@ -10,6 +10,7 @@ import Error from "../../components/error";
 const Product = () => {
   const { id } = useParams();
   const [product, loading, error] = useAxios(`/products/${id}`);
+
   if (loading) {
     return <Loader height="100vh" />;
   }

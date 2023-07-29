@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../contexts/auth-context";
+import axiosProductionInstance from "../axios-instances";
 
 const useAxios = (url, method = "get", needsAuth = false) => {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ const useAxios = (url, method = "get", needsAuth = false) => {
       try {
         let response;
 
-        response = await axios.request({
+        response = await axiosProductionInstance.request({
           url: url,
           method: method,
           headers: needsAuth
@@ -21,8 +22,6 @@ const useAxios = (url, method = "get", needsAuth = false) => {
                 Authorization: `Bearer ${auth}`,
               }
             : {},
-          baseURL:
-            "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io",
         });
         setData(response.data.data);
       } catch (error) {
@@ -31,8 +30,9 @@ const useAxios = (url, method = "get", needsAuth = false) => {
         setLoading(false);
       }
     };
+
     getData();
-  }, [url]);
+  }, []);
   return [data, loading, error];
 };
 
