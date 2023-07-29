@@ -8,8 +8,7 @@ import NavLink from "../../../components/links/nav-link";
 import useAxios from "../../../utils/use-axios";
 
 const NewArrivalsSection = () => {
-
-  const [data]=useAxios("https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&type=new-arrivals")
+  const [data] = useAxios("/products?page=0&type=new-arrivals");
 
   return (
     <Container
@@ -54,7 +53,7 @@ const NewArrivalsSection = () => {
         justifyContent="space-between"
         overflow={"scroll"}
       >
-        {data?.products?.map((CardData,index) => {
+        {data?.products?.map((CardData, index) => {
           return (
             <Box
               key={index}

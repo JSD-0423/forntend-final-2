@@ -26,7 +26,7 @@ const CartTable = ({ productsData }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {productsData.map((product) => (
+          {productsData?.map((product) => (
             <TableRow
               key={product.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -39,7 +39,7 @@ const CartTable = ({ productsData }) => {
                       height: "80px",
                       borderRadius: "7px",
                     }}
-                    src={product.image}
+                    src={product.productImages[0].image_url}
                   />
 
                   <Stack
@@ -48,17 +48,21 @@ const CartTable = ({ productsData }) => {
                     direction={"column"}
                   >
                     <Typography variant="body2">{product.title}</Typography>
-                    <Typography color="grey">{product.category}</Typography>
                     <Typography color="grey">
-                      {`Qty- ${product.quantity}`}
+                      {product.category.title}
+                    </Typography>
+                    <Typography color="grey">
+                      {`Qty- ${product.CartProduct.quantity}`}
                     </Typography>
                   </Stack>
                 </Stack>
               </TableCell>
               <TableCell align="right">{`$${product.price}`}</TableCell>
-              <TableCell align="right">{product.quantity}</TableCell>
+              <TableCell align="right">
+                {product.CartProduct.quantity}
+              </TableCell>
               <TableCell align="right">{`$${
-                product.price * product.quantity
+                product.price * product.CartProduct.quantity
               }`}</TableCell>
             </TableRow>
           ))}

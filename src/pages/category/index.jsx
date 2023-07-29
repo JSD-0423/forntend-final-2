@@ -32,9 +32,9 @@ const Category = () => {
   const searchFiltered = search.replace("?", "");
 
   const [dataFiltered, loading, error] = useAxios(
-    `https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&${searchFiltered}`
+    `/products?page=0&${searchFiltered}`
   );
-  
+
   return (
     <Container
       maxWidth="100%"
@@ -100,7 +100,9 @@ const Category = () => {
               borderRadius: "12px",
               padding: "4px 7px 4px 7px",
             }}
-            count={Math.ceil(dataFiltered?.products?.length / numberOfCardsPerPage)}
+            count={Math.ceil(
+              dataFiltered?.products?.length / numberOfCardsPerPage
+            )}
             onChange={handlePaginationChange}
             hidePrevButton
             renderItem={(item) => {

@@ -2,8 +2,13 @@ import CartTable from "./cart-table";
 import { Container, Typography, Stack, Box } from "@mui/material";
 import OrderSummery from "../../components/order-summery";
 import theme from "../../themes/theme";
+import useAxios from "../../utils/use-axios";
+import { useEffect, useState } from "react";
 
 const CartPage = () => {
+  const [cartData] = useAxios("/carts", "get", true);
+  console.log(cartData);
+
   return (
     <Container
       sx={{
@@ -20,26 +25,7 @@ const CartPage = () => {
         <Typography color="primary" variant="h2">
           My Cart
         </Typography>
-        <CartTable
-          productsData={[
-            {
-              id: 1,
-              image: "images/purse.png",
-              title: "Grande",
-              category: "Blossom Pouch",
-              price: 39.9,
-              quantity: 2,
-            },
-            {
-              id: 1,
-              image: "images/purse.png",
-              title: "Grande",
-              category: "Blossom Pouch",
-              price: 39.9,
-              quantity: 2,
-            },
-          ]}
-        />
+        <CartTable productsData={cartData?.cart?.[0]?.products} />
       </Stack>
       <Box
         sx={{
