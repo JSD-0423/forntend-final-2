@@ -10,7 +10,7 @@ import GridWithPagination from "./grid-with-pagination";
 import BasicAccordion from "./basic-accordion";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../../themes/theme";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PlainSlide from "../../components/plain-slide";
 import categoryHero from "../../assets/images/category-hero.png";
 import useAxios from "../../utils/use-axios";
@@ -31,10 +31,10 @@ const Category = () => {
   const { search } = useLocation();
   const searchFiltered = search.replace("?", "");
 
-  const [dataFiltered, loading, error] = useAxios(
-    `https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&${searchFiltered}`
+  const [dataFiltered, loading, error, setDataFiltered] = useAxios(
+    `/products?page=${page}&${searchFiltered}`
   );
-  
+
   return (
     <Container
       maxWidth="100%"
@@ -100,7 +100,9 @@ const Category = () => {
               borderRadius: "12px",
               padding: "4px 7px 4px 7px",
             }}
-            count={Math.ceil(dataFiltered?.pagination?.total / numberOfCardsPerPage)}
+            count={Math.ceil(
+              dataFiltered?.pagination?.total / numberOfCardsPerPage
+            )}
             onChange={handlePaginationChange}
             // hidePrevButton
             renderItem={(item) => {

@@ -5,7 +5,7 @@ import NavLink from "../../../components/links/nav-link";
 import useAxios from "../../../utils/use-axios";
 
 const BrandsSection = () => {
-  const [data]=useAxios("https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/brands")
+  const [data] = useAxios("/brands");
   return (
     <Container
       sx={{
@@ -37,8 +37,8 @@ const BrandsSection = () => {
           },
         }}
       >
-        {data?.brands?.map((item,index) => {
-          if(index<6){
+        {data?.brands?.map((item, index) => {
+          if (index < 6) {
             return (
               <NavLink
                 path={`/category?brand=${item.id}`}
@@ -47,7 +47,7 @@ const BrandsSection = () => {
               />
             );
           }
-         return null
+          return null;
         })}
       </Stack>
     </Container>

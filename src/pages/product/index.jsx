@@ -9,9 +9,8 @@ import Error from "../../components/error";
 
 const Product = () => {
   const { id } = useParams();
-  const [product, loading, error] = useAxios(
-    `https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products/${id}`
-  );
+  const [product, loading, error] = useAxios(`/products/${id}`);
+
   if (loading) {
     return <Loader height="100vh" />;
   }
