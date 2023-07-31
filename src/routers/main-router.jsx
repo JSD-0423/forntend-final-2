@@ -4,6 +4,7 @@ import SharedLayout from "../components/shared-layout";
 import Home from "../pages/home";
 import Product from "../pages/product";
 import Category from "../pages/category";
+import CheckOut from "../pages/checkout";
 
 const LayOut = () => {
   return (
@@ -13,6 +14,7 @@ const LayOut = () => {
           <Route path="/" element={<Home />} />
           <Route path="/product/:id" element={<Product />}></Route>
           <Route path="/category" element={<Category />}></Route>
+          <Route path="/checkout" element={<CheckOut/>}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

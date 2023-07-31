@@ -100,9 +100,9 @@ const Category = () => {
               borderRadius: "12px",
               padding: "4px 7px 4px 7px",
             }}
-            count={Math.ceil(dataFiltered?.products?.length / numberOfCardsPerPage)}
+            count={Math.ceil(dataFiltered?.pagination?.total / numberOfCardsPerPage)}
             onChange={handlePaginationChange}
-            hidePrevButton
+            // hidePrevButton
             renderItem={(item) => {
               return (
                 <PaginationItem
