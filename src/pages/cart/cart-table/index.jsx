@@ -6,9 +6,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Stack, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
+import ActionLink from "../../../components/links/action-link";
+import { DataTableCell } from "./styels";
 
-const CartTable = ({ productsData }) => {
+const CartTable = ({ productsData, handleRemoveFromCart }) => {
   return (
     <TableContainer sx={{ boxShadow: "0", width: "100%" }} component={Paper}>
       <Table sx={{ width: "100%" }} aria-label="simple table">
@@ -29,7 +31,11 @@ const CartTable = ({ productsData }) => {
           {productsData?.map((product) => (
             <TableRow
               key={product.id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              sx={{
+                "& td, & th": {
+                  border: 0,
+                },
+              }}
             >
               <TableCell sx={{ paddingLeft: 0 }} component="th" scope="row">
                 <Stack gap={1} alignItems={"center"} direction={"row"}>
@@ -38,6 +44,7 @@ const CartTable = ({ productsData }) => {
                       width: "75px",
                       height: "80px",
                       borderRadius: "7px",
+                      objectFit: "cover",
                     }}
                     src={product.productImages[0].image_url}
                   />
@@ -57,13 +64,29 @@ const CartTable = ({ productsData }) => {
                   </Stack>
                 </Stack>
               </TableCell>
-              <TableCell align="right">{`$${product.price}`}</TableCell>
-              <TableCell align="right">
+              <DataTableCell align="right">{`$${product.price}`}</DataTableCell>
+              <DataTableCell align="right">
                 {product.CartProduct.quantity}
-              </TableCell>
-              <TableCell align="right">{`$${
-                product.price * product.CartProduct.quantity
-              }`}</TableCell>
+              </DataTableCell>
+              <DataTableCell sx={{ position: "relative" }} align="right">
+                <Stack direction={"column"}>
+                  <Typography>
+                    {`$${(product.price * product.CartProduct.quantity).toFixed(
+                      2
+                    )}`}
+                  </Typography>
+                  <Box position={"absolute"} bottom={"10px"}>
+                    <ActionLink
+                      action={() => {
+                        handleRemoveFromCart(product.id);
+                      }}
+                      component={"Remove"}
+                      isRemove
+                      isUnderLined="true"
+                    />
+                  </Box>
+                </Stack>
+              </DataTableCell>
             </TableRow>
           ))}
         </TableBody>

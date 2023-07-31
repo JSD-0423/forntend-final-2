@@ -134,6 +134,7 @@ const Header = () => {
                       <Typography variant="h1">{text.title}</Typography>
                     }
                     key={text.id}
+                    isUnderlined
                   />
                 );
               }

@@ -32,8 +32,8 @@ const useAxios = (url, method = "get", needsAuth = false) => {
     };
 
     getData();
-  }, []);
-  return [data, loading, error];
+  }, [url]);
+  return [data, loading, error, setData];
 };
 
 export default useAxios;

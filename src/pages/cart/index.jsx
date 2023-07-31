@@ -3,11 +3,41 @@ import { Container, Typography, Stack, Box } from "@mui/material";
 import OrderSummery from "../../components/order-summery";
 import theme from "../../themes/theme";
 import useAxios from "../../utils/use-axios";
-import { useEffect, useState } from "react";
+import axiosProductionInstance from "../../utils/axios-instances";
+import AuthContext from "../../contexts/auth-context";
+import { useContext, useState } from "react";
 
 const CartPage = () => {
-  const [cartData] = useAxios("/carts", "get", true);
-  console.log(cartData);
+  const [cartData, loading, error, setCartData] = useAxios(
+    "/carts",
+    "get",
+    true
+  );
+
+  const { auth } = useContext(AuthContext);
+
+  const handleRemoveFromCart = async (ProductId) => {
+    try {
+      const response = await axiosProductionInstance({
+        method: "delete",
+        url: `/carts/${ProductId}`,
+        headers: {
+          Authorization: `Bearer ${auth}`,
+        },
+      });
+      setCartData((prevState) => {
+        const newState = JSON.parse(JSON.stringify(prevState));
+        newState.cart[0].products = newState.cart[0].products.filter(
+          (product) => {
+            return product.id !== ProductId;
+          }
+        );
+        return newState;
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Container
@@ -25,7 +55,10 @@ const CartPage = () => {
         <Typography color="primary" variant="h2">
           My Cart
         </Typography>
-        <CartTable productsData={cartData?.cart?.[0]?.products} />
+        <CartTable
+          handleRemoveFromCart={handleRemoveFromCart}
+          productsData={cartData?.cart?.[0]?.products}
+        />
       </Stack>
       <Box
         sx={{

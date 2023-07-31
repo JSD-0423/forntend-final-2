@@ -49,6 +49,7 @@ const ProductDetails = ({ productData }) => {
       setAddToCartMessage(false);
     } finally {
       setSnackBarState(true);
+      setCounter(1);
     }
   };
   const increaseCounter = () => {
