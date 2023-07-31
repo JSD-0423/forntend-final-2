@@ -23,8 +23,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import { useState } from "react";
 import useAxios from "../../utils/use-axios";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const isLaptop = useMediaQuery((theme) => theme.breakpoints.down("lg"));
@@ -32,9 +31,8 @@ const Header = () => {
   const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const [isMobileOpen, setMobileOpen] = useState(false);
-  const [search,setSearch]=useState("")
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
-
 
   const [categories] = useAxios(
     "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
@@ -42,13 +40,13 @@ const Header = () => {
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
-  const handleUserSearch=(e)=>{
-    setSearch(e.target.value)
-    if(e.keyCode===13){
+  const handleUserSearch = (e) => {
+    setSearch(e.target.value);
+    if (e.keyCode === 13) {
       navigate(`/category?q=${search}`, { replace: true });
-      setSearch("")
+      setSearch("");
     }
-  }
+  };
 
   const drawer = (
     <List>
@@ -136,6 +134,7 @@ const Header = () => {
                       <Typography variant="h1">{text.title}</Typography>
                     }
                     key={text.id}
+                    isUnderlined
                   />
                 );
               }
@@ -164,13 +163,27 @@ const Header = () => {
         </Box>
 
         {/* TODO: change Icon Button to buttonWithIcon */}
-        <Stack gap={2} direction={"row"} justifyContent={"space-between"}>
-          {[heartIcon, userIcon, bagIcon].map((icon, index) => {
+        <Stack
+          gap={2}
+          alignItems={"center"}
+          direction={"row"}
+          justifyContent={"space-between"}
+        >
+          {[
+            [heartIcon, "./"],
+            [userIcon, "./"],
+            [bagIcon, "/cart"],
+          ].map(([icon, path], index) => {
             return !isMobile ? (
-              <ButtonWithIcon
-                icon={<img alt="icon" src={icon} />}
+              <NavLink
                 key={index}
-                padding="0px"
+                path={path}
+                component={
+                  <ButtonWithIcon
+                    icon={<img alt="icon" src={icon} />}
+                    padding="0px"
+                  />
+                }
               />
             ) : null;
           })}

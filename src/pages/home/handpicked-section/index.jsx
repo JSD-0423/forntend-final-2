@@ -5,9 +5,7 @@ import NavLink from "../../../components/links/nav-link";
 import useAxios from "../../../utils/use-axios";
 
 const HandPickedSection = () => {
-  const [data] = useAxios(
-    "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&type=handpicked"
-  );
+  const [data] = useAxios("/products?page=0&type=handpicked");
   return (
     <Container
       sx={{
@@ -42,8 +40,8 @@ const HandPickedSection = () => {
           },
         }}
       >
-        {data?.products?.map((item,index) => {
-          if(index<4){
+        {data?.products?.map((item, index) => {
+          if (index < 4) {
             return (
               <NavLink
                 path={`/product/${item.id}`}
@@ -57,7 +55,7 @@ const HandPickedSection = () => {
               />
             );
           }
-          return null
+          return null;
         })}
       </Stack>
     </Container>

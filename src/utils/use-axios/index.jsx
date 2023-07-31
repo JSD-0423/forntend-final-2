@@ -1,30 +1,39 @@
-import axios from 'axios'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import AuthContext from "../../contexts/auth-context";
+import axiosProductionInstance from "../axios-instances";
 
+const useAxios = (url, method = "get", needsAuth = false) => {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const { auth } = useContext(AuthContext);
 
-const useAxios = (url) => { 
-    const [data,setData]=useState([])
-    const [error, setError] = useState('');
-    const [loading, setLoading] = useState(true);
-    
-    useEffect(()=>{
-        
-        const getData=async()=>{
-            try{
-                const response=await axios.get(url)
-                setData(response.data.data)
-            }catch(error){
-                setError(error)
-            }
-            finally{
-                setLoading(false)
-            }
-            
-        }
-        getData()
-    },[url])
-    return [data,loading,error]
-}
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        let response;
 
-export default useAxios
+        response = await axiosProductionInstance.request({
+          url: url,
+          method: method,
+          headers: needsAuth
+            ? {
+                Authorization: `Bearer ${auth}`,
+              }
+            : {},
+        });
+        setData(response.data.data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getData();
+  }, [url]);
+  return [data, loading, error, setData];
+};
+
+export default useAxios;
