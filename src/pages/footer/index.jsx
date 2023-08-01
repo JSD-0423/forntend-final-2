@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Typography, Link, Divider, Stack } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import useAxios from "../../utils/use-axios";
+import useAxiosGet from "../../utils/use-axios-get";
 import NavLink from "../../components/links/nav-link";
 import { NavHashLink } from "react-router-hash-link";
 import facebook from "../../assets/icons/fblogo.svg";
@@ -10,7 +10,7 @@ import twitter from "../../assets/icons/twitter.svg";
 import youTube from "../../assets/icons/youtube.svg";
 
 const Footer = () => {
-  const { data } = useAxios(
+  const { data } = useAxiosGet(
     "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
   );
 

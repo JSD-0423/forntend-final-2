@@ -2,10 +2,10 @@ import { Stack, Typography, Container } from "@mui/material";
 import ProductWithTitle from "../../../components/product-with-title";
 import theme from "../../../themes/theme";
 import NavLink from "../../../components/links/nav-link";
-import useAxios from "../../../utils/use-axios";
+import useAxiosGet from "../../../utils/use-axios-get";
 
 const HandPickedSection = () => {
-  const { data } = useAxios("/products?page=0&type=handpicked");
+  const { data } = useAxiosGet("/products?page=0&type=handpicked");
   return (
     <Container
       sx={{

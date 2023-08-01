@@ -8,12 +8,12 @@ import ButtonWithIcon from "../../../components/buttons/button-with-Icon";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import { useMediaQuery } from "@mui/material";
 import NavLink from "../../../components/links/nav-link";
-import useAxios from "../../../utils/use-axios";
+import useAxiosGet from "../../../utils/use-axios-get";
 
 const HeroSection = () => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
-  const { data } = useAxios(
+  const { data } = useAxiosGet(
     "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
   );
   let handBagsID;

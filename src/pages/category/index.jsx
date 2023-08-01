@@ -13,7 +13,7 @@ import theme from "../../themes/theme";
 import { useState } from "react";
 import PlainSlide from "../../components/plain-slide";
 import categoryHero from "../../assets/images/category-hero.png";
-import useAxios from "../../utils/use-axios";
+import useAxiosGet from "../../utils/use-axios-get";
 import { useLocation } from "react-router-dom";
 const PaginationNextButton = () => {
   return <div>Next</div>;
@@ -32,7 +32,7 @@ const Category = () => {
   const searchFiltered = search.replace("?", "");
 
   //filterd data
-  const { data, loading, error } = useAxios(
+  const { data, loading, error } = useAxiosGet(
     `/products?page=${page}&${searchFiltered}`
   );
 

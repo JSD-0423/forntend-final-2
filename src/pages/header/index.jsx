@@ -22,7 +22,7 @@ import ButtonWithIcon from "../../components/buttons/button-with-Icon";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import { useState } from "react";
-import useAxios from "../../utils/use-axios";
+import useAxiosGet from "../../utils/use-axios-get";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -34,7 +34,7 @@ const Header = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  const { data } = useAxios(
+  const { data } = useAxiosGet(
     "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
   );
 

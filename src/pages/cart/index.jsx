@@ -2,13 +2,13 @@ import CartTable from "./cart-table";
 import { Container, Typography, Stack, Box } from "@mui/material";
 import OrderSummery from "../../components/order-summery";
 import theme from "../../themes/theme";
-import useAxios from "../../utils/use-axios";
+import useAxiosGet from "../../utils/use-axios-get";
 import axiosProductionInstance from "../../utils/axios-instances";
 import AuthContext from "../../contexts/auth-context";
 import { useContext } from "react";
 
 const CartPage = () => {
-  const { data: cartData, forceUpdate } = useAxios("/carts", "get", true);
+  const { data: cartData, forceUpdate } = useAxiosGet("/carts", "get", true);
 
   const { auth } = useContext(AuthContext);
 

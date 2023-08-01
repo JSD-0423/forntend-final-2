@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import AuthContext from "../../contexts/auth-context";
 import axiosProductionInstance from "../axios-instances";
 
-const useAxios = (url, method = "get", needsAuth = false) => {
+const useAxiosGet = (url, method = "get", needsAuth = false) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
@@ -38,4 +38,4 @@ const useAxios = (url, method = "get", needsAuth = false) => {
   return { data, loading, error, setData, setError, setLoading, forceUpdate };
 };
 
-export default useAxios;
+export default useAxiosGet;

@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { Box, Stack } from "@mui/material";
 import { useState } from "react";
 import { StyeldTabButton } from "../../../components/buttons/styles";
-import useAxios from "../../../utils/use-axios";
+import useAxiosGet from "../../../utils/use-axios-get";
 import ProductCard from "../../../components/product-card";
 import theme from "../../../themes/theme";
 
@@ -22,7 +22,7 @@ const TabPanel = ({ children, index, value, ...other }) => {
 
 const TabsSection = ({ productData }) => {
   const [currentTabValue, setCurrentTabValue] = useState("1");
-  const { data: relatedProducts } = useAxios(
+  const { data: relatedProducts } = useAxiosGet(
     `https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&category=${productData?.category_id}`
   );
 

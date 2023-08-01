@@ -3,13 +3,13 @@ import ProductDetails from "../../components/product-details";
 import TabsSection from "./tabs-section";
 import { Container, Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
-import useAxios from "../../utils/use-axios";
+import useAxiosGet from "../../utils/use-axios-get";
 import Loader from "../../components/loader";
 import Error from "../../components/error";
 
 const Product = () => {
   const { id } = useParams();
-  const { data, loading, error } = useAxios(`/products/${id}`);
+  const { data, loading, error } = useAxiosGet(`/products/${id}`);
 
   if (loading) {
     return <Loader height="100vh" />;

@@ -2,10 +2,10 @@ import { Stack, Typography, Container } from "@mui/material";
 import BrandItem from "../../../components/brand-item";
 import theme from "../../../themes/theme";
 import NavLink from "../../../components/links/nav-link";
-import useAxios from "../../../utils/use-axios";
+import useAxiosGet from "../../../utils/use-axios-get";
 
 const BrandsSection = () => {
-  const { data } = useAxios("/brands");
+  const { data } = useAxiosGet("/brands");
   return (
     <Container
       sx={{
