@@ -1,7 +1,7 @@
 import { Typography, Stack, Divider, Button } from "@mui/material";
 import PlainButton from "../buttons/plain-button";
 
-const OrderSummery = ({ orderData }) => {
+const OrderSummery = ({ discount, deliveryFee, grandTotal }) => {
   return (
     <Stack sx={{ width: "100%" }} direction="column">
       <Typography color={"highEmphasis"} fontSize={"20px"} fontWeight={600}>
@@ -10,10 +10,10 @@ const OrderSummery = ({ orderData }) => {
       <Divider />
       <Stack sx={{ marginTop: "15px" }} gap={2} direction={"column"}>
         {[
-          ["Sub Total", "$119"],
-          ["Discount", "$119"],
-          ["Delivery Fee", "$119"],
-          ["Grand Total", "$119"],
+          ["Sub Total", `$${grandTotal / (1 - discount)}`],
+          ["Discount", `%${discount}`],
+          ["Delivery Fee", `$${deliveryFee}`],
+          ["Grand Total", `$${grandTotal + deliveryFee}`],
         ].map((value, index) => (
           <Stack key={index} justifyContent={"space-between"} direction="row">
             <Typography color="grey">{value[0]}</Typography>

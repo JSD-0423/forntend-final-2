@@ -9,7 +9,7 @@ import Error from "../../components/error";
 
 const Product = () => {
   const { id } = useParams();
-  const [product, loading, error] = useAxios(`/products/${id}`);
+  const { data, loading, error } = useAxios(`/products/${id}`);
 
   if (loading) {
     return <Loader height="100vh" />;
@@ -20,10 +20,10 @@ const Product = () => {
   return (
     <Container maxWidth="100%">
       <Grid container spacing={3} marginBottom="55px">
-        <ProductCarousel productData={product.product} />
-        <ProductDetails productData={product.product} />
+        <ProductCarousel productData={data?.product} />
+        <ProductDetails productData={data?.product} />
       </Grid>
-      <TabsSection productData={product.product} />
+      <TabsSection productData={data?.product} />
     </Container>
   );
 };

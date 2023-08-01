@@ -8,7 +8,7 @@ import NavLink from "../../../components/links/nav-link";
 import useAxios from "../../../utils/use-axios";
 
 const NewArrivalsSection = () => {
-  const [data] = useAxios("/products?page=0&type=new-arrivals");
+  const { data } = useAxios("/products?page=0&type=new-arrivals");
 
   return (
     <Container

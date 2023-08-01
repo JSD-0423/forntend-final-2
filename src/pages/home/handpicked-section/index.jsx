@@ -5,7 +5,7 @@ import NavLink from "../../../components/links/nav-link";
 import useAxios from "../../../utils/use-axios";
 
 const HandPickedSection = () => {
-  const [data] = useAxios("/products?page=0&type=handpicked");
+  const { data } = useAxios("/products?page=0&type=handpicked");
   return (
     <Container
       sx={{

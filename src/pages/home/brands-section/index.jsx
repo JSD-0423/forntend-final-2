@@ -5,7 +5,7 @@ import NavLink from "../../../components/links/nav-link";
 import useAxios from "../../../utils/use-axios";
 
 const BrandsSection = () => {
-  const [data] = useAxios("/brands");
+  const { data } = useAxios("/brands");
   return (
     <Container
       sx={{
