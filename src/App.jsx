@@ -4,17 +4,20 @@ import LayOut from "./routers/main-router";
 import { useState } from "react";
 import AuthContext from "./contexts/auth-context";
 import FavouritesContext from "./contexts/favourite-context";
+import BreadContext from "./contexts/breadcrumb-context";
 
 function App() {
   const [auth, setAuth] = useState(localStorage.getItem("auth") || "");
-
   const [anchorEl, setAnchorEl] = useState(null);
+  const [bread, setBread] = useState(["Home"]);
 
   return (
     <ThemeProvider theme={theme}>
       <AuthContext.Provider value={{ auth, setAuth }}>
         <FavouritesContext.Provider value={{ anchorEl, setAnchorEl }}>
-          <LayOut />
+          <BreadContext.Provider value={{ bread, setBread }}>
+            <LayOut />
+          </BreadContext.Provider>
         </FavouritesContext.Provider>
       </AuthContext.Provider>
     </ThemeProvider>
