@@ -34,9 +34,7 @@ const Header = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  const { data } = useAxiosGet(
-    "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
-  );
+  const { data } = useAxiosGet("/categories");
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);

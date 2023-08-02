@@ -1,6 +1,6 @@
 import CartTable from "./cart-table";
-import { Container, Typography, Stack, Box } from "@mui/material";
-import OrderSummery from "../../components/order-summery";
+import { Container, Typography, Stack, Box, Button } from "@mui/material";
+import OrderDetails from "../../components/order-details";
 import theme from "../../themes/theme";
 import useAxiosGet from "../../utils/use-axios-get";
 import axiosProductionInstance from "../../utils/axios-instances";
@@ -56,11 +56,25 @@ const CartPage = () => {
           },
         }}
       >
-        <OrderSummery
+        <OrderDetails
           grandTotal={cartData?.cart?.[0]?.["total_cost"]}
           discount={cartData?.cart?.[0]?.discount}
           deliveryFee={12}
         />
+        <Stack justifyContent={"space-between"} gap={3} direction={"row"}>
+          <Button
+            sx={{ width: "50%", fontSize: "13px", padding: "5px" }}
+            variant="contained"
+          >
+            Place Order
+          </Button>
+          <Button
+            sx={{ width: "50%", fontSize: "13px", padding: "5px" }}
+            variant="outlined"
+          >
+            Contonue Shopping
+          </Button>
+        </Stack>
       </Box>
     </Container>
   );

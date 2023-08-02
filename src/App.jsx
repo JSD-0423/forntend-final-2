@@ -9,8 +9,6 @@ function App() {
     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY5MDU3OTg3MiwiZXhwIjoxNjkzMTcxODcyfQ.53e6tdqIpaVd7hHq8A3Ti8HmOgeY_3hYxqgXnlb2oKA"
   );
 
-  const [cartData, setCartData] = useState([]);
-
   return (
     <ThemeProvider theme={theme}>
       <AuthContext.Provider value={{ auth, setAuth }}>
