@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Typography, Link, Divider, Stack } from "@mui/material";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import useAxios from "../../utils/use-axios";
-import NavLink from "../links/nav-link";
+import useAxiosGet from "../../utils/use-axios-get";
+import NavLink from "../../components/links/nav-link";
 import { NavHashLink } from "react-router-hash-link";
 import facebook from "../../assets/icons/fblogo.svg";
 import instagram from "../../assets/icons/insta.svg";
@@ -10,9 +10,8 @@ import twitter from "../../assets/icons/twitter.svg";
 import youTube from "../../assets/icons/youtube.svg";
 
 const Footer = () => {
-  const [categories] = useAxios(
-    "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
-  );
+  const { data } = useAxiosGet("/categories");
+
   return (
     <Container
       sx={{
@@ -34,7 +33,8 @@ const Footer = () => {
             <Typography sx={{ color: "bright.main" }}>
               Shop by Category
             </Typography>
-            {categories?.categories?.map((item) => {
+            {data?.categories?.map((item) => {
+              console.log(item);
               return (
                 <NavLink
                   path={`/category?category=${item.id}`}

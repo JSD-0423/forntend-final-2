@@ -7,8 +7,6 @@ import AuthContext from "./contexts/auth-context";
 function App() {
   const [auth, setAuth] = useState("");
 
-  const [cartData, setCartData] = useState([]);
-
   return (
     <ThemeProvider theme={theme}>
       <AuthContext.Provider value={{ auth, setAuth }}>

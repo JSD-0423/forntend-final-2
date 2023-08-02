@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import { Box, Stack } from "@mui/material";
 import { useState } from "react";
 import { StyeldTabButton } from "../../../components/buttons/styles";
-import useAxios from "../../../utils/use-axios";
+import useAxiosGet from "../../../utils/use-axios-get";
 import ProductCard from "../../../components/product-card";
 import theme from "../../../themes/theme";
 
@@ -20,9 +20,11 @@ const TabPanel = ({ children, index, value, ...other }) => {
   );
 };
 
-const TabsSection = ({productData}) => {
+const TabsSection = ({ productData }) => {
   const [currentTabValue, setCurrentTabValue] = useState("1");
-  const [relatedProducts]=useAxios(`https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&category=${productData?.category_id}`)
+  const { data: relatedProducts } = useAxiosGet(
+    `https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&category=${productData?.category_id}`
+  );
 
   const handleTabChange = (e, newValue) => {
     setCurrentTabValue(newValue);
@@ -49,7 +51,6 @@ const TabsSection = ({productData}) => {
             component={StyeldTabButton}
             value="1"
             label="Product Description"
-            
           />
 
           <Tab
@@ -68,43 +69,49 @@ const TabsSection = ({productData}) => {
         </Tabs>
       </Box>
 
-      <TabPanel value={currentTabValue} index="1" style={{minHeight: "479px"}}>
+      <TabPanel
+        value={currentTabValue}
+        index="1"
+        style={{ minHeight: "479px" }}
+      >
         {productData?.description}
       </TabPanel>
       <TabPanel value={currentTabValue} index="2">
-       <Stack 
-       sx={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit,minmax(156px,1fr))",
-        rowGap: "40px",
-        columnGap: "40px",
-        justifyContent: "space-between",
-        [theme.breakpoints.down("sm")]: {
-          rowGap: "16px",
-          columnGap: "16px",
-        },
-        [theme.breakpoints.down("400")]: {
-          gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))",
-        },
-      }}
-       >
-          {
-            relatedProducts?.products?.map((item,index)=>{
-              if(index <=3){
-               return <>
-               <Box
-              key={item.id}
-            >
-              <ProductCard data={item} />
-            </Box>
-               </>
-              }
-              return null
-            })
-          }
-       </Stack>
+        <Stack
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit,minmax(156px,1fr))",
+            rowGap: "40px",
+            columnGap: "40px",
+            justifyContent: "space-between",
+            [theme.breakpoints.down("sm")]: {
+              rowGap: "16px",
+              columnGap: "16px",
+            },
+            [theme.breakpoints.down("400")]: {
+              gridTemplateColumns: "repeat(auto-fit,minmax(110px,1fr))",
+            },
+          }}
+        >
+          {relatedProducts?.products?.map((item, index) => {
+            if (index <= 3) {
+              return (
+                <>
+                  <Box key={item.id}>
+                    <ProductCard data={item} />
+                  </Box>
+                </>
+              );
+            }
+            return null;
+          })}
+        </Stack>
       </TabPanel>
-      <TabPanel value={currentTabValue} index="3" style={{minHeight: "479px"}}>
+      <TabPanel
+        value={currentTabValue}
+        index="3"
+        style={{ minHeight: "479px" }}
+      >
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus
         scelerisque laoreet tortor cras molestie tincidunt malesuada malesuada.
         Neque, mauris duis dui id morbi magna. Cras lacus, viverra auctor in
@@ -117,7 +124,7 @@ const TabsSection = ({productData}) => {
         Justo, sed nunc, pretium turpis scelerisque. Enim urna etiam morbi
         vestibulum ac dictumst. Ac ut elementum molestie sit felis imperdiet.
       </TabPanel>
-      </>
+    </>
   );
 };
 

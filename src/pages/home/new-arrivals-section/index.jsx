@@ -5,10 +5,10 @@ import theme from "../../../themes/theme";
 import ButtonWithIcon from "../../../components/buttons/button-with-Icon";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import NavLink from "../../../components/links/nav-link";
-import useAxios from "../../../utils/use-axios";
+import useAxiosGet from "../../../utils/use-axios-get";
 
 const NewArrivalsSection = () => {
-  const [data] = useAxios("/products?page=0&type=new-arrivals");
+  const { data } = useAxiosGet("/products?page=0&type=new-arrivals");
 
   return (
     <Container

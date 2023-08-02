@@ -11,18 +11,18 @@ import {
   Container,
 } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
-import DefaultInput from "../inputs/default-input";
+import DefaultInput from "../../components/inputs/default-input";
 import Logo from "../../assets/icons/logo.svg";
 import heartIcon from "../../assets/icons/heart-primary.svg";
 import userIcon from "../../assets/icons/user.svg";
 import bagIcon from "../../assets/icons/bag.svg";
-import NavLink from "../links/nav-link";
+import NavLink from "../../components/links/nav-link";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import ButtonWithIcon from "../buttons/button-with-Icon";
+import ButtonWithIcon from "../../components/buttons/button-with-Icon";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
 import { useState } from "react";
-import useAxios from "../../utils/use-axios";
+import useAxiosGet from "../../utils/use-axios-get";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -34,9 +34,8 @@ const Header = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
 
-  const [categories] = useAxios(
-    "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
-  );
+  const { data } = useAxiosGet("/categories");
+
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -54,7 +53,7 @@ const Header = () => {
         <ListItemText primary={"Categories"} />
       </ListItem>
       <Divider />
-      {categories?.categories?.map((text, index) => {
+      {data?.categories?.map((text, index) => {
         if (index <= 4) {
           return (
             <ListItem key={text.id} disablePadding>
@@ -125,7 +124,7 @@ const Header = () => {
             justifyContent="space-between"
             gap={3}
           >
-            {categories?.categories?.map((text, index) => {
+            {data?.categories?.map((text, index) => {
               if (index <= 4) {
                 return (
                   <NavLink
