@@ -1,23 +1,23 @@
 import React from "react";
-import PlainSlide from "../plain-slide";
-import herosection from "../../assets/images/herosection.png";
+import PlainSlide from "../../../components/plain-slide";
+import herosection from "../../../assets/images/herosection.png";
 import { Container, Typography, Stack, Box } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
-import herosection2 from "../../assets/images/herosection2.png";
-import ButtonWithIcon from "../buttons/button-with-Icon";
+import herosection2 from "../../../assets/images/herosection2.png";
+import ButtonWithIcon from "../../../components/buttons/button-with-Icon";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import { useMediaQuery } from "@mui/material";
-import NavLink from "../links/nav-link";
-import useAxios from "../../utils/use-axios";
+import NavLink from "../../../components/links/nav-link";
+import useAxiosGet from "../../../utils/use-axios-get";
 
 const HeroSection = () => {
   const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
-  const [catagories] = useAxios(
+  const { data } = useAxiosGet(
     "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
   );
   let handBagsID;
-  catagories?.categories?.map((item) => {
+  data?.categories?.map((item) => {
     if (item?.title === "Handbags") {
       handBagsID = item?.id;
     }

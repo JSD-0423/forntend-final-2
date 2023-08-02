@@ -2,17 +2,13 @@ import CartTable from "./cart-table";
 import { Container, Typography, Stack, Box } from "@mui/material";
 import OrderSummery from "../../components/order-summery";
 import theme from "../../themes/theme";
-import useAxios from "../../utils/use-axios";
+import useAxiosGet from "../../utils/use-axios-get";
 import axiosProductionInstance from "../../utils/axios-instances";
 import AuthContext from "../../contexts/auth-context";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 const CartPage = () => {
-  const [cartData, loading, error, setCartData] = useAxios(
-    "/carts",
-    "get",
-    true
-  );
+  const { data: cartData, forceUpdate } = useAxiosGet("/carts", "get", true);
 
   const { auth } = useContext(AuthContext);
 
@@ -25,18 +21,8 @@ const CartPage = () => {
           Authorization: `Bearer ${auth}`,
         },
       });
-      setCartData((prevState) => {
-        const newState = JSON.parse(JSON.stringify(prevState));
-        newState.cart[0].products = newState.cart[0].products.filter(
-          (product) => {
-            return product.id !== ProductId;
-          }
-        );
-        return newState;
-      });
-    } catch (err) {
-      console.log(err);
-    }
+      forceUpdate((prev) => !prev);
+    } catch (err) {}
   };
 
   return (
@@ -71,12 +57,9 @@ const CartPage = () => {
         }}
       >
         <OrderSummery
-          orderData={{
-            subTotal: "$50",
-            discount: "%30",
-            deliveryFee: "$40",
-            grandTotal: "$120",
-          }}
+          grandTotal={cartData?.cart?.[0]?.["total_cost"]}
+          discount={cartData?.cart?.[0]?.discount}
+          deliveryFee={12}
         />
       </Box>
     </Container>

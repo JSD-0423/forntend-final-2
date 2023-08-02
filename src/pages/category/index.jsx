@@ -10,10 +10,10 @@ import GridWithPagination from "./grid-with-pagination";
 import BasicAccordion from "./basic-accordion";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import theme from "../../themes/theme";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PlainSlide from "../../components/plain-slide";
 import categoryHero from "../../assets/images/category-hero.png";
-import useAxios from "../../utils/use-axios";
+import useAxiosGet from "../../utils/use-axios-get";
 import { useLocation } from "react-router-dom";
 const PaginationNextButton = () => {
   return <div>Next</div>;
@@ -21,17 +21,18 @@ const PaginationNextButton = () => {
 const Category = () => {
   // pagination pages
   const [page, setPage] = useState(1);
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
   const handlePaginationChange = (e, pageNum) => {
     setPage(pageNum);
   };
-
   const numberOfCardsPerPage = 20;
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const { search } = useLocation();
   const searchFiltered = search.replace("?", "");
 
-  const [dataFiltered, loading, error, setDataFiltered] = useAxios(
+  //filterd data
+  const { data, loading, error } = useAxiosGet(
     `/products?page=${page}&${searchFiltered}`
   );
 
@@ -90,7 +91,7 @@ const Category = () => {
             error={error}
             pageNum={page}
             numberOfCardsPerPage={numberOfCardsPerPage}
-            data={dataFiltered?.products}
+            data={data?.products}
           />
 
           <Pagination
@@ -100,9 +101,7 @@ const Category = () => {
               borderRadius: "12px",
               padding: "4px 7px 4px 7px",
             }}
-            count={Math.ceil(
-              dataFiltered?.pagination?.total / numberOfCardsPerPage
-            )}
+            count={Math.ceil(data?.pagination?.total / numberOfCardsPerPage)}
             onChange={handlePaginationChange}
             hidePrevButton
             renderItem={(item) => {
