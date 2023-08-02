@@ -41,16 +41,21 @@ const CartTable = ({ productsData, handleRemoveFromCart }) => {
               <TableCell sx={{ paddingLeft: 0 }} component="th" scope="row">
                 <ProductSummery product={product} />
               </TableCell>
-              <DataTableCell align="right">{`$${product.price}`}</DataTableCell>
+              <DataTableCell align="right">{`$${(
+                product.price *
+                (1 - product.discount / 100)
+              ).toFixed(2)}`}</DataTableCell>
               <DataTableCell align="right">
                 {product.CartProduct.quantity}
               </DataTableCell>
               <DataTableCell sx={{ position: "relative" }} align="right">
                 <Stack direction={"column"}>
                   <Typography>
-                    {`$${(product.price * product.CartProduct.quantity).toFixed(
-                      2
-                    )}`}
+                    {`$${(
+                      product.price *
+                      (1 - product.discount / 100) *
+                      product.CartProduct.quantity
+                    ).toFixed(2)}`}
                   </Typography>
                   <Box position={"absolute"} bottom={"10px"}>
                     <ActionLink

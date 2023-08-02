@@ -23,7 +23,7 @@ const TabPanel = ({ children, index, value, ...other }) => {
 const TabsSection = ({ productData }) => {
   const [currentTabValue, setCurrentTabValue] = useState("1");
   const { data: relatedProducts } = useAxiosGet(
-    `https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/products?page=0&category=${productData?.category_id}`
+    `/products?page=0&category=${productData?.category_id}`
   );
 
   const handleTabChange = (e, newValue) => {
