@@ -50,23 +50,44 @@ const CheckOut = () => {
         },
         data: form,
       });
+      postOrder(response.data?.data?.address?.id);
       reset();
-      console.log(response.data?.data?.address?.id);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const postOrder=(addressID)=>{
-    
-  }
+  const postOrder = async (addressID) => {
+    try {
+      const form = new FormData();
+      form.append("cartId", cartData?.cart[0]?.id);
+      form.append("transactionId", "04d37272-286c-11ee-be56-0242ac120002");
+      form.append("addressId", addressID);
+
+      const response = await axiosProductionInstance({
+        method: "post",
+        url: `/orders`,
+        headers: {
+          Authorization: `Bearer ${auth}`,
+        },
+        data: form,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Container maxWidth={"100%"} sx={{ minHeight: `calc(100vh - 433px)` }}>
       <Typography variant="h2" color="primary.main" marginBottom={"40px"}>
         Checkout
       </Typography>
-      <Grid container marginBottom={"68px"} spacing={15} direction={{xs:"column-reverse",md:"row"}}>
+      <Grid
+        container
+        marginBottom={"68px"}
+        spacing={15}
+        direction={{ xs: "column-reverse", md: "row" }}
+      >
         <Grid item sm={12} md={7}>
           <Accordion style={{ boxShadow: "none" }} defaultExpanded={true}>
             <AccordionSummary
