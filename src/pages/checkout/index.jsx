@@ -6,43 +6,68 @@ import {
   Stack,
   TextField,
   Typography,
+  Divider,
 } from "@mui/material";
 import React from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useState } from "react";
-import PlainButton from "../../components/buttons/plain-button";
-import ButtonWithIcon from "../../components/buttons/button-with-Icon";
 import { useForm } from "react-hook-form";
 import NavLink from "../../components/links/nav-link";
+import ProductSummery from "../../components/product-summery";
+import OrderDetails from "../../components/order-details";
+import useAxiosGet from "../../utils/use-axios-get";
+import axiosProductionInstance from "../../utils/axios-instances";
+import { useContext } from "react";
+import AuthContext from "../../contexts/auth-context";
 
 const CheckOut = () => {
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [mobileNumber, setMobileNumber] = useState();
-  // const [location, setLocation] = useState("");
-  // const handleChange = (setState) => (e) => {
-  //   setState(e.target.value);
-  // };
+  const { data: cartData } = useAxiosGet("/carts", "get", true);
+  const { auth } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      const form = new FormData();
+      form.append("firstName", data.firstName);
+      form.append("lastName", data.lastName);
+      form.append("countryCode", data.prefix);
+      form.append("mobile", data.mobileNumber);
+      form.append("email", data.email);
+      form.append("location", data.location);
+
+      const response = await axiosProductionInstance({
+        method: "post",
+        url: `/addresses`,
+        headers: {
+          Authorization: `Bearer ${auth}`,
+        },
+        data: form,
+      });
+      reset();
+      console.log(response.data?.data?.address?.id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const postOrder=(addressID)=>{
+    
+  }
 
   return (
     <Container maxWidth={"100%"} sx={{ minHeight: `calc(100vh - 433px)` }}>
       <Typography variant="h2" color="primary.main" marginBottom={"40px"}>
         Checkout
       </Typography>
-      <Grid container marginBottom={"68px"}>
-        <Grid item sm={12} md={8}>
+      <Grid container marginBottom={"68px"} spacing={15} direction={{xs:"column-reverse",md:"row"}}>
+        <Grid item sm={12} md={7}>
           <Accordion style={{ boxShadow: "none" }} defaultExpanded={true}>
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
@@ -72,11 +97,8 @@ const CheckOut = () => {
                         First Name
                       </Typography>
                       <TextField
-                        // required
                         hiddenLabel
-                        // value={firstName}
                         variant="filled"
-                        // onChange={handleChange(setFirstName)}
                         fullWidth
                         placeholder="Enter First Name"
                         type={"text"}
@@ -102,9 +124,7 @@ const CheckOut = () => {
                       <TextField
                         required
                         hiddenLabel
-                        // value={lastName}
                         variant="filled"
-                        // onChange={handleChange(setLastName)}
                         fullWidth
                         placeholder="Enter Last Name"
                         type={"text"}
@@ -130,11 +150,8 @@ const CheckOut = () => {
                         Email
                       </Typography>
                       <TextField
-                        // required
                         hiddenLabel
-                        // value={email}
                         variant="filled"
-                        // onChange={handleChange(setEmail)}
                         fullWidth
                         placeholder="Enter Email"
                         type={"email"}
@@ -164,12 +181,10 @@ const CheckOut = () => {
                       </Typography>
                       <Stack direction={"row"} gap={2}>
                         <TextField
-                          sx={{ width: "20%" }}
+                          sx={{ width: { xs: "20%", md: "45%", lg: "30%" } }}
                           required
                           hiddenLabel
-                          // value={mobileNumber}
                           variant="filled"
-                          // onChange={handleChange(setMobileNumber)}
                           defaultValue="+970"
                           type={"tel"}
                           InputProps={{
@@ -186,9 +201,7 @@ const CheckOut = () => {
                         <TextField
                           required
                           hiddenLabel
-                          // value={mobileNumber}
                           variant="filled"
-                          // onChange={handleChange(setMobileNumber)}
                           fullWidth
                           placeholder="Enter Mobile Number"
                           type={"tel"}
@@ -223,9 +236,7 @@ const CheckOut = () => {
                       <TextField
                         required
                         hiddenLabel
-                        // value={location}
                         variant="filled"
-                        // onChange={handleChange(setLocation)}
                         fullWidth
                         placeholder="Enter Location"
                         type={"text"}
@@ -269,8 +280,24 @@ const CheckOut = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Stack direction={"row"} justifyContent="space-between" alignItems={"center"}>
-            <NavLink component={<Typography fontWeight={"600"} color={"primary.main"} marginLeft="26px">Back to Cart</Typography>} isUnderLined="true" path="/cart"/>
+          <Stack
+            direction={"row"}
+            justifyContent="space-between"
+            alignItems={"center"}
+          >
+            <NavLink
+              component={
+                <Typography
+                  fontWeight={"600"}
+                  color={"primary.main"}
+                  marginLeft="26px"
+                >
+                  Back to Cart
+                </Typography>
+              }
+              isUnderLined="true"
+              path="/cart"
+            />
             <Button
               form="myForm"
               type="submit"
@@ -279,6 +306,35 @@ const CheckOut = () => {
             >
               Place Order
             </Button>
+          </Stack>
+        </Grid>
+        <Grid item sm={12} md={5}>
+          <Stack gap={8}>
+            <Stack gap={4}>
+              <Stack gap={1}>
+                <Typography
+                  color={"#13101E"}
+                  fontSize={"20px"}
+                  fontWeight={600}
+                >
+                  Order Summery
+                </Typography>
+                <Divider />
+              </Stack>
+              {cartData?.cart?.[0]?.products.map((product, index) => {
+                if (index < 2) {
+                  return <ProductSummery product={product} key={index} />;
+                }
+                return null;
+              })}
+            </Stack>
+            <Stack>
+              <OrderDetails
+                grandTotal={cartData?.cart?.[0]?.["total_cost"]}
+                discount={cartData?.cart?.[0]?.discount}
+                deliveryFee={12}
+              />
+            </Stack>
           </Stack>
         </Grid>
       </Grid>

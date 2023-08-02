@@ -6,7 +6,6 @@ import useAxiosGet from "../../utils/use-axios-get";
 import axiosProductionInstance from "../../utils/axios-instances";
 import AuthContext from "../../contexts/auth-context";
 import { useContext } from "react";
-
 const CartPage = () => {
   const { data: cartData, forceUpdate } = useAxiosGet("/carts", "get", true);
 

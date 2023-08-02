@@ -34,7 +34,6 @@ const Footer = () => {
               Shop by Category
             </Typography>
             {data?.categories?.map((item) => {
-              console.log(item);
               return (
                 <NavLink
                   path={`/category?category=${item.id}`}

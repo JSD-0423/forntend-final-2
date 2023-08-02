@@ -28,7 +28,6 @@ export default function SignIn() {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const form = new FormData();
       form.append("email", data.email);

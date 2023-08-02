@@ -1,7 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 
 const ProductSummery = ({ product }) => {
-  console.log(product);
   return (
     <Stack gap={1} alignItems={"center"} direction={"row"}>
       <img
@@ -12,6 +11,7 @@ const ProductSummery = ({ product }) => {
           objectFit: "cover",
         }}
         src={product?.productImages?.[0]?.image_url}
+        alt={product?.title}
       />
       <Stack
         justifyContent={"space-between"}
