@@ -4,7 +4,13 @@ import theme from "../../../themes/theme";
 import Loader from "../../../components/loader";
 import Error from "../../../components/error";
 
-const GridWithPagination = ({ loading, error, data }) => {
+const GridWithPagination = ({
+  loading,
+  error,
+  data,
+  addRemoveFormFavourites,
+  favouritesSet,
+}) => {
   if (loading) {
     return <Loader />;
   }
@@ -41,6 +47,8 @@ const GridWithPagination = ({ loading, error, data }) => {
             onSale={cardData?.discount}
             key={index}
             data={cardData}
+            favouritesAction={addRemoveFormFavourites}
+            isInFavourites={favouritesSet?.has(cardData?.id)}
           />
         );
       })}
