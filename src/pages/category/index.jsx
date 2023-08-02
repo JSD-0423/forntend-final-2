@@ -15,16 +15,17 @@ import PlainSlide from "../../components/plain-slide";
 import categoryHero from "../../assets/images/category-hero.png";
 import useAxiosGet from "../../utils/use-axios-get";
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../../contexts/auth-context";
+import { useMemo } from "react";
+import axiosProductionInstance from "../../utils/axios-instances";
+
 const PaginationNextButton = () => {
   return <div>Next</div>;
 };
 const Category = () => {
   // pagination pages
   const [page, setPage] = useState(1);
-  const handlePaginationChange = (e, pageNum) => {
-    setPage(pageNum);
-  };
-  const numberOfCardsPerPage = 20;
 
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -35,6 +36,44 @@ const Category = () => {
   const { data, loading, error } = useAxiosGet(
     `/products?page=${page}&${searchFiltered}`
   );
+
+  const handlePaginationChange = (e, pageNum) => {
+    setPage(pageNum);
+  };
+
+  const numberOfCardsPerPage = 20;
+
+  const { data: favouritesData, forceUpdate } = useAxiosGet(
+    "/favourites",
+    "get",
+    true
+  );
+
+  const { auth } = useContext(AuthContext);
+
+  const favouritesSet = useMemo(() => {
+    const set = new Set();
+    for (let i = 0; i < favouritesData?.favourites?.length; i++) {
+      set.add(favouritesData.favourites[i].id);
+    }
+    return set;
+  }, [favouritesData]);
+
+  const addRemoveFormFavourites = async (ProductId) => {
+    try {
+      const response = await axiosProductionInstance.request({
+        url: `/favourites/${ProductId}`,
+        method: "post",
+        headers: {
+          Authorization: `Bearer ${auth}`,
+        },
+      });
+
+      forceUpdate();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Container
@@ -92,6 +131,8 @@ const Category = () => {
             pageNum={page}
             numberOfCardsPerPage={numberOfCardsPerPage}
             data={data?.products}
+            addRemoveFormFavourites={addRemoveFormFavourites}
+            favouritesSet={favouritesSet}
           />
 
           <Pagination

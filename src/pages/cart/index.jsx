@@ -6,9 +6,11 @@ import useAxiosGet from "../../utils/use-axios-get";
 import axiosProductionInstance from "../../utils/axios-instances";
 import AuthContext from "../../contexts/auth-context";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
   const { data: cartData, forceUpdate } = useAxiosGet("/carts", "get", true);
+  const navigate = useNavigate();
 
   const { auth } = useContext(AuthContext);
 
@@ -21,7 +23,7 @@ const CartPage = () => {
           Authorization: `Bearer ${auth}`,
         },
       });
-      forceUpdate((prev) => !prev);
+      forceUpdate();
     } catch (err) {}
   };
 
@@ -50,6 +52,9 @@ const CartPage = () => {
         sx={{
           marginTop: "100px",
           width: "411px",
+          display: "flex",
+          flexDirection: "column",
+          gap: 5,
           [theme.breakpoints.down("800")]: {
             width: "100%",
             marginTop: "20px",
@@ -65,12 +70,18 @@ const CartPage = () => {
           <Button
             sx={{ width: "50%", fontSize: "13px", padding: "5px" }}
             variant="contained"
+            onClick={() => {
+              navigate("/");
+            }}
           >
             Place Order
           </Button>
           <Button
             sx={{ width: "50%", fontSize: "13px", padding: "5px" }}
             variant="outlined"
+            onClick={() => {
+              navigate("/category");
+            }}
           >
             Contonue Shopping
           </Button>

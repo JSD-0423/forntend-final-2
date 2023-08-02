@@ -9,6 +9,7 @@ import {
   ListItemIcon,
   Divider,
   Container,
+  IconButton,
 } from "@mui/material";
 import { FiSearch } from "react-icons/fi";
 import DefaultInput from "../../components/inputs/default-input";
@@ -21,9 +22,10 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import ButtonWithIcon from "../../components/buttons/button-with-Icon";
 import MenuIcon from "@mui/icons-material/Menu";
 import Drawer from "@mui/material/Drawer";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useAxiosGet from "../../utils/use-axios-get";
 import { useNavigate } from "react-router-dom";
+import FavouritesContext from "../../contexts/favourite-context";
 
 const Header = () => {
   const isLaptop = useMediaQuery((theme) => theme.breakpoints.down("lg"));
@@ -36,9 +38,17 @@ const Header = () => {
 
   const { data } = useAxiosGet("/categories");
 
+  const { setAnchorEl } = useContext(FavouritesContext);
+
+  const handleFavClick = (e) => {
+    console.log(e);
+    setAnchorEl(e.currentTarget);
+  };
+
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+
   const handleUserSearch = (e) => {
     setSearch(e.target.value);
     if (e.keyCode === 13) {
@@ -174,16 +184,22 @@ const Header = () => {
             [bagIcon, "/cart"],
           ].map(([icon, path], index) => {
             return !isMobile ? (
-              <NavLink
-                key={index}
-                path={path}
-                component={
-                  <ButtonWithIcon
-                    icon={<img alt="icon" src={icon} />}
-                    padding="0px"
-                  />
-                }
-              />
+              index !== 0 ? (
+                <NavLink
+                  key={index}
+                  path={path}
+                  component={
+                    <ButtonWithIcon
+                      icon={<img alt="icon" src={icon} />}
+                      padding="0px"
+                    />
+                  }
+                />
+              ) : (
+                <IconButton sx={{ padding: "0px" }} onClick={handleFavClick}>
+                  <img alt="icon" src={icon} />
+                </IconButton>
+              )
             ) : null;
           })}
         </Stack>
