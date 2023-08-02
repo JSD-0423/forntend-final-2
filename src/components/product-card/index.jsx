@@ -119,8 +119,8 @@ const ProductCard = ({
 
         <ButtonWithIcon
           padding="0px"
-          onClick={() => {
-            favouritesAction?.();
+          action={() => {
+            favouritesAction?.(data.id);
           }}
           icon={
             isInFavourites ? (

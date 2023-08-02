@@ -128,7 +128,7 @@ export default function SignIn() {
                   path="/"
                   component={
                     <Link href="" variant="body2">
-                      For
+                      Home
                     </Link>
                   }
                 />

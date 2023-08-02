@@ -7,15 +7,11 @@ import Category from "../pages/category";
 import CartPage from "../pages/cart";
 import CheckOut from "../pages/checkout";
 import SignIn from "../pages/signin-signout";
-import AuthContext from "../contexts/auth-context";
 import SignUp from "../pages/signup";
-import SimpleDialogDemo from "../pages/user-profile";
 
 const LayOut = () => {
-  const [auth, setAuth] = useState(localStorage.getItem("auth") || "");
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth }}>
       <BrowserRouter basename="/frontend-final-2">
         <Routes>
           <Route element={<SharedLayout />}>
@@ -29,7 +25,6 @@ const LayOut = () => {
           <Route path="/signUp" element={<SignUp/>}></Route>
         </Routes>
       </BrowserRouter>
-    </AuthContext.Provider>
   );
 };
 
