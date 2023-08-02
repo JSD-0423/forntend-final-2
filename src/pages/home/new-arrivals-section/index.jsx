@@ -6,9 +6,42 @@ import ButtonWithIcon from "../../../components/buttons/button-with-Icon";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import NavLink from "../../../components/links/nav-link";
 import useAxiosGet from "../../../utils/use-axios-get";
+import { useContext, useEffect, useMemo } from "react";
+import axiosProductionInstance from "../../../utils/axios-instances";
+import AuthContext from "../../../contexts/auth-context";
 
 const NewArrivalsSection = () => {
   const { data } = useAxiosGet("/products?page=0&type=new-arrivals");
+  const { data: favouritesData, forceUpdate } = useAxiosGet(
+    "/favourites",
+    "get",
+    true
+  );
+  const { auth } = useContext(AuthContext);
+
+  const favouritesSet = useMemo(() => {
+    const set = new Set();
+    for (let i = 0; i < favouritesData?.favourites?.length; i++) {
+      set.add(favouritesData.favourites[i].id);
+    }
+    return set;
+  }, [favouritesData]);
+
+  const addRemoveFormFavourites = async (ProductId) => {
+    try {
+      const response = await axiosProductionInstance.request({
+        url: `/favourites/${ProductId}`,
+        method: "post",
+        headers: {
+          Authorization: `Bearer ${auth}`,
+        },
+      });
+
+      forceUpdate();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Container
@@ -65,7 +98,11 @@ const NewArrivalsSection = () => {
                 },
               }}
             >
-              <ProductCard data={CardData} />
+              <ProductCard
+                favouritesAction={addRemoveFormFavourites}
+                isInFavourites={favouritesSet?.has(CardData.id)}
+                data={CardData}
+              />
             </Box>
           );
         })}

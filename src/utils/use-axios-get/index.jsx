@@ -8,7 +8,7 @@ const useAxiosGet = (url, method = "get", needsAuth = false) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   // use "forceUpdate" as a method to refetch API data after some action
-  const [update, forceUpdate] = useState(true);
+  const [update, setUpdate] = useState(true);
   const { auth } = useContext(AuthContext);
 
   useEffect(() => {
@@ -35,6 +35,11 @@ const useAxiosGet = (url, method = "get", needsAuth = false) => {
 
     getData();
   }, [url, update]);
+
+  const forceUpdate = () => {
+    setUpdate((prevState) => !prevState);
+  };
+
   return { data, loading, error, setData, setError, setLoading, forceUpdate };
 };
 
