@@ -23,7 +23,7 @@ const CartPage = () => {
           Authorization: `Bearer ${auth}`,
         },
       });
-      forceUpdate((prev) => !prev);
+      forceUpdate();
     } catch (err) {}
   };
 
