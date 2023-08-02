@@ -15,6 +15,7 @@ import { useContext } from "react";
 import axiosProductionInstance from "../../utils/axios-instances";
 import AuthContext from "../../contexts/auth-context";
 import { useNavigate } from "react-router-dom";
+import NavLink from "../../components/links/nav-link";
 
 const defaultTheme = createTheme();
 
@@ -99,7 +100,7 @@ export default function SignIn() {
                   value:
                     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
                   message:
-                    "min length 8 and should have one char and one number",
+                    "min length 8 and should have one char, number, and special char",
                 },
                 required: "Password is required",
               })}
@@ -122,9 +123,14 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <NavLink
+                  path="/signUp"
+                  component={
+                    <Link href="#" variant="body2">
+                      {"Don't have an account? Sign Up"}
+                    </Link>
+                  }
+                />
               </Grid>
             </Grid>
           </Box>
