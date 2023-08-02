@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { Box, Stack, Typography } from "@mui/material";
 import ActionLink from "../../../components/links/action-link";
 import { DataTableCell } from "./styels";
+import ProductSummery from "../../../components/product-summery";
 
 const CartTable = ({ productsData, handleRemoveFromCart }) => {
   return (
@@ -38,31 +39,7 @@ const CartTable = ({ productsData, handleRemoveFromCart }) => {
               }}
             >
               <TableCell sx={{ paddingLeft: 0 }} component="th" scope="row">
-                <Stack gap={1} alignItems={"center"} direction={"row"}>
-                  <img
-                    style={{
-                      width: "75px",
-                      height: "80px",
-                      borderRadius: "7px",
-                      objectFit: "cover",
-                    }}
-                    src={product.productImages[0].image_url}
-                  />
-
-                  <Stack
-                    justifyContent={"space-between"}
-                    sx={{ height: "80px" }}
-                    direction={"column"}
-                  >
-                    <Typography variant="body2">{product.title}</Typography>
-                    <Typography color="grey">
-                      {product.category.title}
-                    </Typography>
-                    <Typography color="grey">
-                      {`Qty- ${product.CartProduct.quantity}`}
-                    </Typography>
-                  </Stack>
-                </Stack>
+                <ProductSummery product={product} />
               </TableCell>
               <DataTableCell align="right">{`$${product.price}`}</DataTableCell>
               <DataTableCell align="right">

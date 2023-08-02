@@ -10,9 +10,7 @@ import twitter from "../../assets/icons/twitter.svg";
 import youTube from "../../assets/icons/youtube.svg";
 
 const Footer = () => {
-  const { data } = useAxiosGet(
-    "https://app-68c6b164-71cf-4968-8378-502de2661021.cleverapps.io/categories"
-  );
+  const { data } = useAxiosGet("/categories");
 
   return (
     <Container
