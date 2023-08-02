@@ -9,6 +9,7 @@ import CheckOut from "../pages/checkout";
 import SignIn from "../pages/signin-signout";
 import AuthContext from "../contexts/auth-context";
 import SignUp from "../pages/signup";
+import SimpleDialogDemo from "../pages/user-profile";
 
 const LayOut = () => {
   const [auth, setAuth] = useState(localStorage.getItem("auth") || "");
@@ -25,7 +26,7 @@ const LayOut = () => {
             <Route path="/checkout" element={<CheckOut />}></Route>
           </Route>
           <Route path="/signIn" element={<SignIn />}></Route>
-          <Route path="signUp" element={<SignUp/>}></Route>
+          <Route path="/signUp" element={<SignUp/>}></Route>
         </Routes>
       </BrowserRouter>
     </AuthContext.Provider>

@@ -24,6 +24,7 @@ import Drawer from "@mui/material/Drawer";
 import { useState } from "react";
 import useAxiosGet from "../../utils/use-axios-get";
 import { useNavigate } from "react-router-dom";
+import SimpleDialogDemo, { SimpleDialog } from "../user-profile";
 
 const Header = () => {
   const isLaptop = useMediaQuery((theme) => theme.breakpoints.down("lg"));
@@ -33,6 +34,15 @@ const Header = () => {
   const [isMobileOpen, setMobileOpen] = useState(false);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+  };
 
   const { data } = useAxiosGet("/categories");
 
@@ -160,6 +170,7 @@ const Header = () => {
             handler={handleUserSearch}
           />
         </Box>
+        <SimpleDialog open={open} onClose={handleClose} />
 
         {/* TODO: change Icon Button to buttonWithIcon */}
         <Stack
@@ -170,9 +181,9 @@ const Header = () => {
         >
           {[
             [heartIcon, "./"],
-            [userIcon, "./"],
+            [userIcon, "#", handleClickOpen],
             [bagIcon, "/cart"],
-          ].map(([icon, path], index) => {
+          ].map(([icon, path,action], index) => {
             return !isMobile ? (
               <NavLink
                 key={index}
@@ -181,6 +192,7 @@ const Header = () => {
                   <ButtonWithIcon
                     icon={<img alt="icon" src={icon} />}
                     padding="0px"
+                    action={action}
                   />
                 }
               />

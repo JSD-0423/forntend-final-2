@@ -21,10 +21,12 @@ import useAxiosGet from "../../utils/use-axios-get";
 import axiosProductionInstance from "../../utils/axios-instances";
 import { useContext } from "react";
 import AuthContext from "../../contexts/auth-context";
+import { useNavigate } from "react-router-dom";
 
 const CheckOut = () => {
   const { data: cartData } = useAxiosGet("/carts", "get", true);
   const { auth } = useContext(AuthContext);
+  const navigate=useNavigate()
   const {
     register,
     handleSubmit,
@@ -72,6 +74,7 @@ const CheckOut = () => {
         },
         data: form,
       });
+      navigate('/cart',{replace:true})
     } catch (err) {
       console.log(err);
     }

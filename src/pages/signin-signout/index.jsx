@@ -40,6 +40,12 @@ export default function SignIn() {
       });
       setAuth(response?.data?.data?.user?.token);
       localStorage.setItem("auth", response?.data?.data?.user?.token);
+      localStorage.setItem(
+        "name",
+        response?.data?.data?.user?.firstName +
+          " " +
+          response?.data?.data?.user?.lastName
+      );
       navigate(`/`, { replace: true });
     } catch (err) {
       console.log(err);
