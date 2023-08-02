@@ -124,9 +124,14 @@ export default function SignIn() {
 
             <Grid container gap={3}>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
+                <NavLink
+                  path="/"
+                  component={
+                    <Link href="" variant="body2">
+                      For
+                    </Link>
+                  }
+                />
               </Grid>
               <Grid item>
                 <NavLink
