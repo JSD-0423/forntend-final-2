@@ -16,6 +16,7 @@ import { useState } from "react";
 import PlainButton from "../../components/buttons/plain-button";
 import ButtonWithIcon from "../../components/buttons/button-with-Icon";
 import { useForm } from "react-hook-form";
+import NavLink from "../../components/links/nav-link";
 
 const CheckOut = () => {
   // const [firstName, setFirstName] = useState("");
@@ -268,8 +269,8 @@ const CheckOut = () => {
               </Typography>
             </AccordionDetails>
           </Accordion>
-          <Stack direction={"row"} justifyContent="space-between">
-            <PlainButton text={"Back to Cart"} type="text"></PlainButton>
+          <Stack direction={"row"} justifyContent="space-between" alignItems={"center"}>
+            <NavLink component={<Typography fontWeight={"600"} color={"primary.main"} marginLeft="26px">Back to Cart</Typography>} isUnderLined="true" path="/cart"/>
             <Button
               form="myForm"
               type="submit"

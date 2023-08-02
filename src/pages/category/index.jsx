@@ -104,7 +104,7 @@ const Category = () => {
               dataFiltered?.pagination?.total / numberOfCardsPerPage
             )}
             onChange={handlePaginationChange}
-            // hidePrevButton
+            hidePrevButton
             renderItem={(item) => {
               return (
                 <PaginationItem

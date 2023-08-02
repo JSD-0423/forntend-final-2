@@ -5,6 +5,8 @@ import Home from "../pages/home";
 import Product from "../pages/product";
 import Category from "../pages/category";
 import CartPage from "../pages/cart";
+import CheckOut from "../pages/checkout";
+import SignIn from "../pages/signin-signout";
 
 const LayOut = () => {
   return (
@@ -15,7 +17,9 @@ const LayOut = () => {
           <Route path="/product/:id" element={<Product />}></Route>
           <Route path="/category" element={<Category />}></Route>
           <Route path="/cart" element={<CartPage />}></Route>
+          <Route path="/checkout" element={<CheckOut/>}></Route>
         </Route>
+        <Route path="/signIn" element={<SignIn/>}></Route>
       </Routes>
     </BrowserRouter>
   );
