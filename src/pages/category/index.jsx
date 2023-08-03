@@ -19,6 +19,7 @@ import { useContext } from "react";
 import AuthContext from "../../contexts/auth-context";
 import { useMemo } from "react";
 import axiosProductionInstance from "../../utils/axios-instances";
+import Breadcrumb from "../../components/breadcrumb";
 
 const PaginationNextButton = () => {
   return <div>Next</div>;
@@ -119,6 +120,8 @@ const Category = () => {
           </Box>
         </PlainSlide>
       </Stack>
+      <Breadcrumb paths={{page:data?.products?.[0]?.category?.title}}/>
+      <Typography variant="h2" color="primary.main">{data?.products?.[0]?.category?.title}</Typography>
       <Stack direction={"row"} gap={4}>
         <Box display={isMobile ? "none" : "flex"} flex={"1 90px"}>
           <BasicAccordion />

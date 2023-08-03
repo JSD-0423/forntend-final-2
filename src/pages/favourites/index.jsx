@@ -6,14 +6,14 @@ import { useContext } from "react";
 import FavouritesContext from "../../contexts/favourite-context";
 import NavLink from "../../components/links/nav-link";
 
-const Favourites = () => {
+const Favourites = ({favourites}) => {
   const { setAnchorEl, anchorEl } = useContext(FavouritesContext);
-  const { data: favourites } = useAxiosGet("/favourites", "get", true);
-  console.log(favourites, "fav");
+  // const { data: favourites } = useAxiosGet("/favourites", "get", true);
 
   const handleClose = () => {
     setAnchorEl(null);
   };
+
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;

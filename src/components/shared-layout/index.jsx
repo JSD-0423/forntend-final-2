@@ -8,7 +8,6 @@ const SharedLayout = () => {
   return (
     <>
       <Header />
-      <Favourites />
       <Outlet />
       <Footer />
     </>

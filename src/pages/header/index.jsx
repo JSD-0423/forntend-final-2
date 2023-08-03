@@ -26,6 +26,8 @@ import { useContext, useState } from "react";
 import useAxiosGet from "../../utils/use-axios-get";
 import { useNavigate } from "react-router-dom";
 import FavouritesContext from "../../contexts/favourite-context";
+import { SimpleDialog } from "../user-profile";
+import Favourites from "../favourites";
 
 const Header = () => {
   const isLaptop = useMediaQuery((theme) => theme.breakpoints.down("lg"));
@@ -35,13 +37,27 @@ const Header = () => {
   const [isMobileOpen, setMobileOpen] = useState(false);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+  };
 
   const { data } = useAxiosGet("/categories");
+  const { data: favourites, forceUpdate } = useAxiosGet(
+    "/favourites",
+    "get",
+    true
+  );
 
   const { setAnchorEl } = useContext(FavouritesContext);
 
   const handleFavClick = (e) => {
-    console.log(e);
+    forceUpdate();
     setAnchorEl(e.currentTarget);
   };
 
@@ -79,24 +95,33 @@ const Header = () => {
         return null;
       })}
       <Divider />
-      {[heartIcon, userIcon, bagIcon].map((icon, index) => {
+      {[
+        [heartIcon, "#", handleFavClick],
+        [userIcon, "#", handleClickOpen],
+        [bagIcon, "/cart"],
+      ].map(([icon, path, action], index) => {
         return isMobile ? (
-          <ListItem key={index}>
-            <ListItemButton>
-              <ListItemIcon>
-                <img alt="icon" src={icon} />
-              </ListItemIcon>
-              <ListItemText
-                primary={
-                  index === 0
-                    ? "Favourites"
-                    : index === 1
-                    ? "User Profile"
-                    : "Cart"
-                }
-              />
-            </ListItemButton>
-          </ListItem>
+          <NavLink
+            path={path}
+            component={
+              <ListItem key={index}>
+                <ListItemButton onClick={action}>
+                  <ListItemIcon>
+                    <img alt="icon" src={icon} />
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={
+                      index === 0
+                        ? "Favourites"
+                        : index === 1
+                        ? "User Profile"
+                        : "Cart"
+                    }
+                  />
+                </ListItemButton>
+              </ListItem>
+            }
+          />
         ) : null;
       })}
     </List>
@@ -170,6 +195,7 @@ const Header = () => {
             handler={handleUserSearch}
           />
         </Box>
+        <SimpleDialog open={open} onClose={handleClose} />
 
         {/* TODO: change Icon Button to buttonWithIcon */}
         <Stack
@@ -180,9 +206,9 @@ const Header = () => {
         >
           {[
             [heartIcon, "./"],
-            [userIcon, "./"],
+            [userIcon, "#", handleClickOpen],
             [bagIcon, "/cart"],
-          ].map(([icon, path], index) => {
+          ].map(([icon, path, action], index) => {
             return !isMobile ? (
               index !== 0 ? (
                 <NavLink
@@ -192,6 +218,7 @@ const Header = () => {
                     <ButtonWithIcon
                       icon={<img alt="icon" src={icon} />}
                       padding="0px"
+                      action={action}
                     />
                   }
                 />
@@ -214,6 +241,7 @@ const Header = () => {
       >
         {drawer}
       </Drawer>
+      <Favourites favourites={favourites} />
     </Container>
   );
 };
