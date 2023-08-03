@@ -22,11 +22,12 @@ import axiosProductionInstance from "../../utils/axios-instances";
 import { useContext } from "react";
 import AuthContext from "../../contexts/auth-context";
 import { useNavigate } from "react-router-dom";
+import Breadcrumb from "../../components/breadcrumb";
 
 const CheckOut = () => {
   const { data: cartData } = useAxiosGet("/carts", "get", true);
   const { auth } = useContext(AuthContext);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -74,7 +75,7 @@ const CheckOut = () => {
         },
         data: form,
       });
-      navigate('/cart',{replace:true})
+      navigate("/cart", { replace: true });
     } catch (err) {
       console.log(err);
     }
@@ -82,6 +83,8 @@ const CheckOut = () => {
 
   return (
     <Container maxWidth={"100%"} sx={{ minHeight: `calc(100vh - 433px)` }}>
+      <Breadcrumb paths={{ page: "Checkout", path: "/checkout" }} />
+
       <Typography variant="h2" color="primary.main" marginBottom={"40px"}>
         Checkout
       </Typography>

@@ -9,7 +9,7 @@ import BreadContext from "./contexts/breadcrumb-context";
 function App() {
   const [auth, setAuth] = useState(localStorage.getItem("auth") || "");
   const [anchorEl, setAnchorEl] = useState(null);
-  const [bread, setBread] = useState(["Home"]);
+  const [bread, setBread] = useState([{page:"Home",path:"/"}]);
 
   return (
     <ThemeProvider theme={theme}>

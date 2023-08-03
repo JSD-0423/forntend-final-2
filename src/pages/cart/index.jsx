@@ -7,6 +7,7 @@ import axiosProductionInstance from "../../utils/axios-instances";
 import AuthContext from "../../contexts/auth-context";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import Breadcrumb from "../../components/breadcrumb";
 
 const CartPage = () => {
   const { data: cartData, forceUpdate } = useAxiosGet("/carts", "get", true);
@@ -40,6 +41,7 @@ const CartPage = () => {
       }}
     >
       <Stack flexShrink={7} flexGrow={2} gap={2} direction="column">
+      <Breadcrumb paths={{ page: "My Cart", path: "/cart" }} />
         <Typography color="primary" variant="h2">
           My Cart
         </Typography>
@@ -71,7 +73,7 @@ const CartPage = () => {
             sx={{ width: "50%", fontSize: "13px", padding: "5px" }}
             variant="contained"
             onClick={() => {
-              navigate("/checkout",{replace:true});
+              navigate("/checkout", { replace: true });
             }}
           >
             Place Order

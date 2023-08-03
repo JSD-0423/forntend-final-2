@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import useAxiosGet from "../../utils/use-axios-get";
 import Loader from "../../components/loader";
 import Error from "../../components/error";
+import Breadcrumb from "../../components/breadcrumb";
 
 const Product = () => {
   const { id } = useParams();
@@ -18,7 +19,14 @@ const Product = () => {
     return <Error height="100vh" />;
   }
   return (
-    <Container maxWidth="100%">
+    <Container>
+      <Breadcrumb
+        paths={{
+          page: data?.product?.category?.title,
+          id: data?.product?.category?.id,
+        }}
+        product={data?.product?.title}
+      />
       <Grid container spacing={3} marginBottom="55px">
         <ProductCarousel productData={data?.product} />
         <ProductDetails productData={data?.product} />
